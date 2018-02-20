@@ -1,0 +1,18 @@
+body, div {
+    margin: 0;
+    padding: 0;
+}
+a, a:hover {
+    text-decoration: none;
+    color: #000;
+}
+.row {
+	margin-bottom: 8px;
+}
+#navbar-right-text {
+	padding-top: 15px;
+	padding-right: 5px;
+}
+#extend-search-bar {
+	width: 350px;
+}
