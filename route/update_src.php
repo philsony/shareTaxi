@@ -1,5 +1,7 @@
 <?php
   require('../connect.php');
+
+	?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -27,7 +29,7 @@
 			</div>
 			<input type="hidden" name="srcLat" class="form-control" id="srcLat" value="10.29896770" >
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong" value="123.88131810">
-			<input type="hidden" name= "ID" value= <?php require "connect.php"; echo $_SESSION['id']?>>
+			<input type="hidden" name= "ID" value="<?php  echo $_SESSION['id'] ; ?>">
 			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
 			<div id="map"></div>
 			<button type="submit" class="btn btn-success">Next</button>
