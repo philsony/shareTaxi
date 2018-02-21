@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-<?php require "../loginChecker.php"; ?>
-
->>>>>>> 433af9c52ccd5fa8649a8d7de447871ae1df4675
+<?php
+  require('../connect.php');
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -23,7 +20,7 @@
 <div class="row">
 	<div class="col-xs-12">
 	<!-- Actual Form -->
-		<form method="POST" action="update_dest.php"> 
+		<form method="POST" action="update_dest.php">
 			<div class="form-group">
 				<label for="user">Origin</label>
 				<input type="text" name="source" class="form-control" id="source" placeholder="Search Box" required>
@@ -45,21 +42,21 @@
 	// prompted by your browser. If you see the error "The Geolocation service
 	// failed.", it means you probably did not give permission for the browser to
 	// locate you.
-	
-	
+
+
 	var map, infoWindow, geocoder, searchBox;
-	var srcLat= <?php 
-		$result = mysqli_query($db, "SELECT * FROM pool WHERE user_id = {$_SESSION['id']} LIMIT 1");	
+	var srcLat= <?php
+		$result = mysqli_query($db, "SELECT * FROM pool WHERE user_id = {$_SESSION['id']} LIMIT 1");
 		$row = mysqli_fetch_assoc($result);
-		
+
 		$routeId = $row['route_id'];
-		
+
 		$result = mysqli_query($db, "SELECT * from route WHERE route_id = {$routeId} LIMIT 1");
 		$row = mysqli_fetch_assoc($result);
-		
+
 		echo $row['origin_latitude'];
 	?>;
-	var srcLong= <?php 
+	var srcLong= <?php
 		echo $row['origin_longitude'];
 	?>;
 	// Initializing thes map
@@ -68,12 +65,12 @@
 		  center: {lat: srcLat , lng: srcLong }, // Default USC Talamban Campus
 		  zoom: 18
 		});
-		
+
 		infoWindow = new google.maps.InfoWindow;
-		geocoder = new google.maps.Geocoder;	
+		geocoder = new google.maps.Geocoder;
 		searchBox = new google.maps.places.SearchBox(document.getElementById('source'));
 		map.controls.push(document.getElementById('source'));
-		
+
 		var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
@@ -102,7 +99,7 @@
 			// For db
 			$('#srcLat').val(pos.lat);
 			$('#srcLong').val(pos.lng);
-			
+
             markers.push(new google.maps.Marker({
               map: map,
               title: place.name,
@@ -119,15 +116,15 @@
           map.fitBounds(bounds);
         });
 	}
-	
+
 	// If user clicks "Your current location"
 	// Google takes his latlong and updates the map
 	// Also places the address inside the input box
-	
+
 	$('#curr_loc').on('click', function(){
 		if (navigator.geolocation) {
 		  navigator.geolocation.getCurrentPosition(function(position) {
-			
+
 			var pos = {
 			  lat: position.coords.latitude,
 			  lng: position.coords.longitude
@@ -150,10 +147,10 @@
 					window.alert('Geocoder failed due to: ' + status);
 				}
 			});
-			
+
 			infoWindow.setPosition(pos);
 			infoWindow.open(map, marker);
-			map.setCenter(pos);		
+			map.setCenter(pos);
 			var marker = new google.maps.Marker({
 				position: pos,
 				map: map,
@@ -166,13 +163,13 @@
 		  handleLocationError(false, infoWindow, map.getCenter());
 		}
 	});
-	
+
 	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		infoWindow.setPosition(pos);
 		infoWindow.setContent(browserHasGeolocation ?
 						  'Error: The Geolocation service failed.' :
 						  'Error: Your browser doesn\'t support geolocation.');
-		infoWindow.open(map);	
+		infoWindow.open(map);
 	}
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBOsw4rpr5IU_mQEmRbiz1EMA3YCtpPaw&callback=initMap&libraries=places"></script>

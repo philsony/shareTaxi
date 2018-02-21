@@ -1,6 +1,5 @@
 <?php
-	session_start();
-    require "connect.php";
+  require('../connect.php');
 
     $success = "location: login.php";
     $failure = "location: register.php";

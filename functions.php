@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 
 function getUserLocation() {
@@ -17,12 +17,12 @@ function getUserLocation() {
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
             $data = curl_exec($ch);
             curl_close($ch);
-            
+
             if ($data) {
                 $location = json_decode($data);
-							
+
             }
-        
+
         return $location;
 
 }
@@ -30,7 +30,7 @@ function getUserLocation() {
 	function session_check($arr) {
 		$success = true;
 		foreach($arr as $mem) {
-			if(!isset($_SESSION[$mem])) { 
+			if(!isset($_SESSION[$mem])) {
 				$success = false;
 				break;
 			}
@@ -38,4 +38,3 @@ function getUserLocation() {
 		return $success;
 	}
 ?>
-

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-<?php require "../loginChecker.php"; ?>
-
->>>>>>> 433af9c52ccd5fa8649a8d7de447871ae1df4675
+<?php
+  require('../connect.php');
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -23,7 +20,7 @@
 <div class="row">
 	<div class="col-xs-12">
 	<!-- Actual Form -->
-		<form method="POST" action="update.php"> 
+		<form method="POST" action="update.php">
 			<div class="form-group">
 				<label for="user">Destination</label>
 				<input type="text" name="destination" class="form-control" id="destination" placeholder="Search Box" required="">
@@ -48,18 +45,18 @@
 	// failed.", it means you probably did not give permission for the browser to
 	// locate you.
 	var map, infoWindow, geocoder, searchBox;
-	var srcLat= <?php 
-		$result = mysqli_query($db, "SELECT * FROM pool WHERE user_id = {$_SESSION['id']} LIMIT 1");	
+	var srcLat= <?php
+		$result = mysqli_query($db, "SELECT * FROM pool WHERE user_id = {$_SESSION['id']} LIMIT 1");
 		$row = mysqli_fetch_assoc($result);
-		
+
 		$routeId = $row['route_id'];
-		
+
 		$result = mysqli_query($db, "SELECT * from route WHERE route_id = {$routeId} LIMIT 1");
 		$row = mysqli_fetch_assoc($result);
-		
+
 		echo $row['destination_latitude'];
 	?>;
-	var srcLong= <?php 
+	var srcLong= <?php
 		echo $row['destination_longitude'];
 	?>;
 	// Previous Data
@@ -70,12 +67,12 @@
 		  center: {lat: srcLat  , lng: srcLong}, // Default USC Talamban Campus
 		  zoom: 18
 		});
-		
+
 		infoWindow = new google.maps.InfoWindow;
-		geocoder = new google.maps.Geocoder;	
+		geocoder = new google.maps.Geocoder;
 		searchBox = new google.maps.places.SearchBox(document.getElementById('destination'));
 		map.controls.push(document.getElementById('destination'));
-		
+
 		var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
@@ -107,7 +104,7 @@
 			// For db
 			$('#destLat').val(pos.lat);
 			$('#destLong').val(pos.lng);
-			
+
             markers.push(new google.maps.Marker({
               map: map,
               title: place.name,
@@ -124,24 +121,24 @@
           map.fitBounds(bounds);
         });
 	}
-	
+
 	// If user clicks "Your current location"
 	// Google takes his latlong and updates the map
 	// Also places the address inside the input box
-	
+
 	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		infoWindow.setPosition(pos);
 		infoWindow.setContent(browserHasGeolocation ?
 						  'Error: The Geolocation service failed.' :
 						  'Error: Your browser doesn\'t support geolocation.');
-		infoWindow.open(map);	
+		infoWindow.open(map);
 	}
-	
+
 	function prepareSourceDataForTransmission(){
 		var srcLat	= "<?php echo $_POST['srcLat'] ?>",
 			srcLong = "<?php echo $_POST['srcLong'] ?>",
 			source	= "<?php echo $_POST['source'] ?>"; // actually useless, but might be needed later
-			
+
 		$('#srcLat').val(srcLat);
 		$('#srcLong').val(srcLong);
 		$('#source').val(source);
