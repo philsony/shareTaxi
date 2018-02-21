@@ -156,28 +156,35 @@
           if (navigator.geolocation) {
               navigator.geolocation.getCurrentPosition(savePosition);
           } else {
-              //
+              //get The latitude from the IP
+              var data =   {latitude: <?php echo $userLocation->latitude ; ?>, longitude: <?php echo $userLocation->longitude ; ?>};
+              sendData(data);
           }
       }
 
+     function sendData(data){
+
+       $.ajax({
+           url: "<?php echo BASE_URL ; ?>user/updateLocation.php",
+           type: "POST",
+           data: data,
+           success: function(reponse) {
+               response = JSON.parse(reponse);
+               console.log(response);
+               if (response.status == 1) {
+                   window.location = response.url;
+               }
+           }
+       });
+
+     }
       function savePosition(position) {
           var data = {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
           };
 
-          $.ajax({
-              url: "<?php echo BASE_URL ; ?>user/updateLocation.php",
-              type: "POST",
-              data: data,
-              success: function(reponse) {
-                  response = JSON.parse(reponse);
-                  console.log(response);
-                  if (response.status == 1) {
-                      window.location = response.url;
-                  }
-              }
-          });
+          sendData(data);
       }
 
       var map;
