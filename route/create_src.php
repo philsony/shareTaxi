@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+	require "../connect.php";
+  
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -25,9 +28,9 @@
 			</div>
 			<input type="hidden" name="srcLat" class="form-control" id="srcLat">
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
-			<input type="hidden" name="currentLong" class="form-control" id="currentLong">
-			<input type="hidden" name="currentLat" class="form-control" id="currentLat">
-			<button type="submit" class="btn btn-info" id="curr_loc">Your current location</button>
+			<input type="hidden" name="currentLong" value="<?php echo $userLocation->longitude ; ?>" class="form-control" id="currentLong">
+			<input type="hidden" name="currentLat" value="<?php echo $userLocation->latitude ; ?>" class="form-control" id="currentLat">
+			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
 			<div id="map"></div>
 			<button type="submit" class="btn btn-success">Next</button>
 		</form>
@@ -88,6 +91,8 @@
 					title: place.name,
 					position: pos
 				}));
+				
+				
 
 				if (place.geometry.viewport) {
 					// Only geocodes have viewport.
@@ -103,48 +108,24 @@
 	// Google takes his latlong and updates the map
 	// Also places the address inside the input box
 	document.getElementById("curr_loc").addEventListener('click', function(){
-		if (navigator.geolocation) {
-		  navigator.geolocation.getCurrentPosition(function(position) {
+		
+		 
 			
 			var pos = {
-			  lat: position.coords.latitude,
-			  lng: position.coords.longitude
+			  lat: document.getElementById('currentLong').value,
+			  lng: document.getElementById('currentLat').value
 			};
 			// For db
 			document.getElementById('srcLat').setAttribute('value', pos.lat);
-			document.getElementById('srcLong').setAttribute('value', pos.long);
-			// Reverse Geocoding (accepts longlat, returns address)
-			geocoder.geocode({'location': pos}, function(results, status) {
-				if (status === 'OK') {
-					if (results[0]) {
-					  // Changes #source input box to the address
-					  document.getElementById('source').setAttribute('value', results[0].formatted_address);
-					  // Little pop-up
-					  infoWindow.setContent(results[0].formatted_address);
-					} else {
-					  window.alert('No results found');
-					}
-				} else {
-					window.alert('Geocoder failed due to: ' + status);
-				}
-			});
-			
-			infoWindow.setPosition(pos);
-			infoWindow.open(map, marker);
-			map.setCenter(pos);		
-			var marker = new google.maps.Marker({
+			document.getElementById('srcLong').setAttribute('value', pos.lng);
+    
+			var marker = new window.google.maps.Marker({
 				position: pos,
 				map: map,
 			});
-		  }, function() {
-			handleLocationError(true, infoWindow, map.getCenter());
-		  });
-		} else {
-		  // Browser doesn't support Geolocation
-		  handleLocationError(false, infoWindow, map.getCenter());
-		}
+		
 	});
-
+		
 	
 	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		infoWindow.setPosition(pos);
@@ -154,6 +135,6 @@
 		infoWindow.open(map);	
 	}
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBOsw4rpr5IU_mQEmRbiz1EMA3YCtpPaw&callback=initMap&libraries=places"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBOsw4rpr5IU_mQEmRbiz1EMA3YCtpPaw&callback=initMap&libraries=places&sensor=false&v2"></script>
 </body>
 </html>
