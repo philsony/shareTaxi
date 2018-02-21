@@ -118,7 +118,7 @@
                       if($owner_id == $_SESSION['id']){
 
                       //INSERT UPDATE MODULE
-                      echo "<form method='POST' action ='#' class='options'>";
+                      echo "<form method='POST' action ='".BASE_URL."route/update_src.php' class='options'>";
                         echo "<input type='text' value={$pool_data['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$pool_data['pool_id']} name='pool_id' class='hiddeninput'>";
                         echo "<button class='btn btn-success' name='submitme'>Update Status</button>";
@@ -162,7 +162,7 @@
 
       //converts A TEXT to a "LAT,LNG" code FORMAT
   $('#sub_me').click(function(e){
-      
+
         var geocoder = new google.maps.Geocoder;
         var data = document.getElementById("searchthis").value;
         var latlng = "";
