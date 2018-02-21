@@ -61,7 +61,7 @@
       <!-- search bar -->
       <div class='col-xs-4 col-md-4 col-lg-4'>
         <form id='searchform' method='POST' action='search.php'>
-          <input type='text' id='searchthis' name='latlng' placeholder='Where to go?'>
+          <input type='text' id='searchthis' value="" name='latlng' placeholder='Where to go?'>
           <input type'text' id='hiddentext' name='hideme'>
           <button name='sub' type='submit' id='sub_me'>Search</button>
         </form>
@@ -121,7 +121,7 @@
           echo "<center><p class='h1'>No pools available, sorry.</center>";
           echo "</div>";
           echo "<div class='row'>";
-          echo "<center><button class='btn btn-success'>Create Pool</button></center>";
+          echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></center>";
           echo "</div>";
         }
       ?>

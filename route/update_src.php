@@ -123,7 +123,7 @@
 	// Google takes his latlong and updates the map
 	// Also places the address inside the input box
 
-	$('#curr_loc').on('click', function(){
+	document.getElementById("curr_loc").addEventListener('click', function(){
 		if (navigator.geolocation) {
 		  navigator.geolocation.getCurrentPosition(function(position) {
 
@@ -132,14 +132,14 @@
 			  lng: position.coords.longitude
 			};
 			// For db
-			$('#srcLat').val(pos.lat);
-			$('#srcLong').val(pos.lng);
+			document.getElementById('srcLat').setAttribute('value', pos.lat);
+			document.getElementById('srcLong').setAttribute('value', pos.long);
 			// Reverse Geocoding (accepts longlat, returns address)
 			geocoder.geocode({'location': pos}, function(results, status) {
 				if (status === 'OK') {
 					if (results[0]) {
 					  // Changes #source input box to the address
-					  $('#source').val(results[0].formatted_address);
+					  document.getElementById('source').setAttribute('value', results[0].formatted_address);
 					  // Little pop-up
 					  infoWindow.setContent(results[0].formatted_address);
 					} else {
@@ -166,13 +166,41 @@
 		}
 	});
 
+	function getLocationFromIp(){
+
+      var location = "<?php echo $userLocation->city ; ?>,<?php echo $userLocation->region_name ; ?>,<?php echo $userLocation->country_name ; ?> ";
+			map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: <?php echo $userLocation->latitude ; ?>, lng: <?php echo $userLocation->longitude ; ?>}, // Default USC Talamban Campus
+			zoom: 18
+		});
+
+
+			var pos = {
+			  lat: document.getElementById('currentLong').value,
+			  lng: document.getElementById('currentLat').value
+			};
+			// For db
+			document.getElementById('srcLat').setAttribute('value', pos.lat);
+			document.getElementById('srcLong').setAttribute('value', pos.lng);
+      document.getElementById('source').setAttribute('value', location);
+			var marker = new window.google.maps.Marker({
+				position: pos,
+				map: map,
+			});
+
+
+	}
+
+
 	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		infoWindow.setPosition(pos);
+
+	getLocationFromIp() ;
+	/* infoWindow.setPosition(pos);
 		infoWindow.setContent(browserHasGeolocation ?
 						  'Error: The Geolocation service failed.' :
 						  'Error: Your browser doesn\'t support geolocation.');
 		infoWindow.open(map);
-	}
+	*/ }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBOsw4rpr5IU_mQEmRbiz1EMA3YCtpPaw&callback=initMap&libraries=places"></script>
 </body></html>

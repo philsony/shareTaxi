@@ -125,7 +125,7 @@
                       echo "</form>";
 
                       //INSERT DELETE MODULE
-                      echo "<form method='POST' action ='#' class='options'>";
+                      echo "<form method='POST' action ='".BASE_URL."route/delete.php' class='options'>";
                         echo "<input type='text' value={$pool_data['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$pool_data['pool_id']} name='pool_id' class='hiddeninput'>";
                         echo "<button class='btn btn-danger' name='submitme'>Delete Active Pool</button>";

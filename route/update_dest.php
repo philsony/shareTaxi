@@ -1,5 +1,7 @@
 <?php
   require('../connect.php');
+
+	?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -30,7 +32,7 @@
 			<input type="hidden" name="source" class="form-control" id="source">
 			<input type="hidden" name="srcLat" class="form-control" id="srcLat">
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
-			<input type="hidden" name= "ID" class= "form-countrol" id="ID" value= <?php require "connect.php"; echo $_SESSION['id']?>>
+			<input type="hidden" name= "ID" class= "form-countrol" id="ID" value="<?php echo $_SESSION['id'] ;?>">
 			<div id="map"></div>
 			<button type="submit" class="btn btn-success">Submit</button>
 		</form>
