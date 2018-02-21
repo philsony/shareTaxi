@@ -1,6 +1,7 @@
 <?php
 include("functions.php");
-
+include("loginChecker.php");
+//phpmyadmin url : http://vps162337.vps.ovh.ca/phpmyadmin/
 $user = "admin_shareTaxi";
 $pass = "shareTaxi";
 $db = "admin_shareTaxi";

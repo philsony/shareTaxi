@@ -1,9 +1,16 @@
 <?php
 	require "connect.php";
 
+
 	// Redirects unauthorized/unintentional access
 	if( !isset($_POST['destLat']) || !isset($_POST['destLong']) ) {
 		header('location:create_src.php');
+	require "../core.php";
+	require "../loginChecker.php";
+
+	// Redirects unauthorized/unintentional access
+	if( !isset($_POST['destLat']) || !isset($_POST['destLong']) ) {
+		header(CREATE_SOURCE);
 		die("Unauthorized access");
 	}
 
@@ -47,5 +54,7 @@
 
 		// Return to homepage
 		// header('location:homescreen.php');
+		//Return to homepage
+		header(HOMEPAGE);
 	}
 ?>

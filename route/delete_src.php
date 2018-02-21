@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+<?php require "../loginChecker.php"; ?>
+
+>>>>>>> 433af9c52ccd5fa8649a8d7de447871ae1df4675
 <!DOCTYPE html>
 <html lng="eng">
     <head>
