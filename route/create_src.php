@@ -25,7 +25,9 @@
 			</div>
 			<input type="hidden" name="srcLat" class="form-control" id="srcLat">
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
-			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
+			<input type="hidden" name="currentLong" class="form-control" id="currentLong">
+			<input type="hidden" name="currentLat" class="form-control" id="currentLat">
+			<button type="submit" class="btn btn-info" id="curr_loc">Your current location</button>
 			<div id="map"></div>
 			<button type="submit" class="btn btn-success">Next</button>
 		</form>
