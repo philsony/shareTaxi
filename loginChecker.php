@@ -1,5 +1,4 @@
 <?php
-  require('../connect.php');
 	session_start();
    $_SESSION['id'] = 1 ;
    $_SESSION['login_user'] = 'login_user' ;

@@ -1,7 +1,5 @@
 <?php
 
-
-
 function getUserLocation() {
             $location = null ;
             $ip = $_SERVER['REMOTE_ADDR'];
