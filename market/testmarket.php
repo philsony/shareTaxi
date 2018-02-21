@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
 <?php
   require('../connect.php');
-  $_SESSION['id'] = 1; //insert user_id here
-?>
+
+?><!DOCTYPE html>
+<html>
   <head>
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
