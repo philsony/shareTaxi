@@ -1,8 +1,8 @@
 <?php
-  session_start();
+
   require('../connect.php');
-  $conn = $db;
-  $_SESSION['id'] = 1;
+
+
 
   if(isset($_POST['submitme'])){
   	$pool_id = $_POST['pool_id'];

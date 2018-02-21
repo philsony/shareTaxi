@@ -106,7 +106,7 @@
               echo "<p class='pool_id'>Pool ID: {$data['pool_id']}</p>";
 
               // allows the user to join a pool, rejects if 4 (doesnt happen anyway since it wont show up here due to SQL restriction of pools sharer > 4)
-              echo "<form method='POST' action ='joinpool.php'>";
+              echo "<form method='POST' action ='".BASE_URL."market/joinpool.php'>";
                 echo "<input type='text' value={$data['route_id']} name='route_id' class='hiddeninput'>";
                 echo "<input type='text' value={$data['pool_id']} name='pool_id' class='hiddeninput'>";
                 echo "<button class='btn btn-success' name='submitme'>Join Pool</button>";

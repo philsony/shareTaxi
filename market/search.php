@@ -1,6 +1,5 @@
 <?php
   require('../connect.php');
-  $_SESSION['id'] = 1; //insert user_id here
 ?>
   <head>
     <title>Simple Map</title>

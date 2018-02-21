@@ -5,6 +5,7 @@
 		header("Location: ../login/login.php");
 	}
 
- $user_id = $_SESSION['id'] ;
- $login_session = $_SESSION['login_user'] ;
+	$user_id = (isset($_SESSION['id'] )) ?  $_SESSION['id']: '' ;
+	$login_session = (isset($_SESSION['login_user'] )) ? $_SESSION['login_user'] : '';
+
 ?>

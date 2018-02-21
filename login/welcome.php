@@ -1,6 +1,6 @@
 <?php
   require('../connect.php');
-  
+
 	$sql = "SELECT * FROM pool WHERE user_id = $user_id ";
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -33,7 +33,11 @@
 
 	  ?>
 		<h2><a href = "profile.php">Profile</a></h2>
-        <h2><a href = "logout.php">Sign Out</a></h2>
-        <h2><a href = "settings.php">Settings</a></h2>
+
+        <h2><a href = "<?php echo BASE_URL ; ?>/market/myactive_pools.php">My active Pools</a></h2>
+        <h2><a href = "<?php echo BASE_URL ; ?>/route/create_src.php">Create Route</a></h2>
+        <h2><a href = "<?php echo BASE_URL ; ?>/market/testmarket.php">Market</a></h2>
+          <h2><a href = "settings.php">Settings</a></h2>
+          <h2><a href = "logout.php">Sign Out</a></h2>
    </body>
 </html>
