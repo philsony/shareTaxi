@@ -24,18 +24,21 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
         $checker = mysqli_num_rows($drawn);
         mysqli_free_result($drawn);
         if($checker){
-            echo "<script>alert('Email is already in use!');</script>";
+            echo "<script>alert('Email is already in use!');</script> <a href=\"login/register.php\">Go Back</a>";
         }
     }
     //Adds the new account if there is no same email
+		$userLocation =  getUserLocation();
     if(!$checker){
         $query =
-            "INSERT INTO users values(null, '{$_POST['username']}', '{$user_pass}', '{$_POST['email']}', '{$date}', '0.0', '0.0')";
-        $result = mysqli_query($db, $query) or die("something went wrong! in registration");
+            "INSERT INTO users values(null, '{$_POST['username']}', '{$user_pass}', '{$_POST['email']}', $userLocation->latitude, $userLocation->longitude, NOW())";
+        $result = mysqli_query($db, $query) or die(mysqli_error($db));
         $id = mysqli_insert_id($db);
         if($result){
-            echo "alert('Account has been successfully created!');";
-            header($success);
+					$_SESSION['id'] = $id;
+					$_SESSION['login_user'] = $_POST['username'];
+
+					header("location: welcome.php");
         }
     }
 }
