@@ -78,7 +78,7 @@
             while($data = mysqli_fetch_assoc($result)){
 
                 //gets all the necessary data from database given that you OWN THE ROUTE
-                $querythree = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t1.route_cost, t1.route_status, t1.add_orig, t1.add_Dest, t2.num_users
+                $querythree = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest, t2.num_users
                                 FROM
                                 (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`,
                                 r.destination_longitude as `route_destlong`, r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`,
@@ -162,6 +162,7 @@
 
       //converts A TEXT to a "LAT,LNG" code FORMAT
   $('#sub_me').click(function(e){
+      
         var geocoder = new google.maps.Geocoder;
         var data = document.getElementById("searchthis").value;
         var latlng = "";

@@ -10,7 +10,7 @@
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$hashed);
 
-      $sql = "SELECT user_id FROM users WHERE name = '$myusername' AND password = '$mypassword'";
+      $sql = "SELECT * FROM users WHERE name = '$myusername' AND password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
@@ -24,6 +24,7 @@
          //session_register("myusername");
          $_SESSION['id'] = $row['user_id'];
          $_SESSION['login_user'] = $myusername;
+         $_SESSION['user'] = $row ;
 
          header("location: welcome.php");
       }else {

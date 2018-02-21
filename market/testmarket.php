@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src='js/jquery-3.2.1.min.js'></script>
     <style>
+
+    <?php
+       $getLocation = "";
+       $getLocationdata= "hidden";
+    if($_SESSION['user']['location_longitude'] == 0.00000000 || $_SESSION['user']['location_latitude'] == 0.00000000  ){
+       $getLocation = 'hidden' ;
+       $getLocationdata= "";
+    }
+    ?>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
@@ -21,6 +30,9 @@
         height: 100%;
         margin: 0;
         padding: 0;
+      }
+      .center {
+        text-align: center;
       }
     .showborder{
       border:3px solid black;
@@ -117,18 +129,57 @@
         }else{
 
           //prompts when there are no WAITING pools in the market
-          echo "<div class='row'>";
+          echo "<div class='row ".$getLocation."'>";
           echo "<center><p class='h1'>No pools available, sorry.</center>";
           echo "</div>";
-          echo "<div class='row'>";
-          echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></center>";
+          echo "<div class='row ".$getLocation."'>";
+          echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></a></center>";
+          echo "</div>";
+
+          echo "<div class='row ".$getLocationdata."'>";
+          echo "<center><p class='h1'>We need to get your location first</p></center>";
+          echo "</div>";
+          echo "<div id=\"geolocationButton\" class='row center ".$getLocationdata."'>";
+          echo "<center><button onclick=\"getLocation()\" class='btn btn-success'>Click Here to set your location</button></center>";
           echo "</div>";
         }
       ?>
     </div>
   </div>
+
+
   <div id="map"></div>
-    <script>
+
+  <script>
+      function getLocation() {
+          document.getElementById("geolocationButton").innerHTML = '<img src="<?php echo BASE_URL ; ?>assets/images/please_wait.gif"/>';
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(savePosition);
+          } else {
+              //
+          }
+      }
+
+      function savePosition(position) {
+          var data = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+          };
+
+          $.ajax({
+              url: "<?php echo BASE_URL ; ?>user/updateLocation.php",
+              type: "POST",
+              data: data,
+              success: function(reponse) {
+                  response = JSON.parse(reponse);
+                  console.log(response);
+                  if (response.status == 1) {
+                      window.location = response.url;
+                  }
+              }
+          });
+      }
+
       var map;
       //this function is used to initialize the API, since we need its geocode function for the convertion of text to LAT,LNG code
       function initMap() {

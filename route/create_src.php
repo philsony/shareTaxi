@@ -26,7 +26,7 @@
 <div class="row">
 	<div class="col-xs-12">
 	<!-- Actual Form -->
-		<form method="POST" action="create_dest.php"> 
+		<form method="POST" action="create_dest.php">
 			<div class="form-group">
 				<label for="user">Origin</label>
 				<input type="text" name="source" class="form-control" id="source" placeholder="Search Box" required>
@@ -51,25 +51,25 @@
 	// failed.", it means you probably did not give permission for the browser to
 	// locate you.
 	var map, infoWindow, geocoder, searchBox;
-	
+
 	// Initialize the map
 	function initMap() {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: 10.3541, lng: 123.9116}, // Default USC Talamban Campus
 			zoom: 18
 		});
-		
+
 		infoWindow = new google.maps.InfoWindow;
-		geocoder = new google.maps.Geocoder;	
+		geocoder = new google.maps.Geocoder;
 		searchBox = new google.maps.places.SearchBox(document.getElementById('source'));
 		map.controls.push(document.getElementById('source'));
-		
+
 		var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
         searchBox.addListener('places_changed', function(){
 			var places = searchBox.getPlaces();
-		
+
 			if (places.length == 0) {
 				return;
 			}
@@ -92,7 +92,7 @@
 				// For db
 				document.getElementById('srcLat').setAttribute('value', pos.lat);
 				document.getElementById('srcLong').setAttribute('value', pos.lng);
-					
+
 				markers.push(new google.maps.Marker({
 					map: map,
 					title: place.name,
@@ -116,7 +116,7 @@
 	document.getElementById("curr_loc").addEventListener('click', function(){
 		if (navigator.geolocation) {
 		  navigator.geolocation.getCurrentPosition(function(position) {
-			
+
 			var pos = {
 			  lat: position.coords.latitude,
 			  lng: position.coords.longitude
@@ -139,10 +139,10 @@
 					window.alert('Geocoder failed due to: ' + status);
 				}
 			});
-			
+
 			infoWindow.setPosition(pos);
 			infoWindow.open(map, marker);
-			map.setCenter(pos);		
+			map.setCenter(pos);
 			var marker = new google.maps.Marker({
 				position: pos,
 				map: map,
@@ -155,16 +155,16 @@
 		  handleLocationError(false, infoWindow, map.getCenter());
 		}
 	});
-	
+
 	function getLocationFromIp(){
-		
+
       var location = "<?php echo $userLocation->city ; ?>,<?php echo $userLocation->region_name ; ?>,<?php echo $userLocation->country_name ; ?> ";
 			map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: <?php echo $userLocation->latitude ; ?>, lng: <?php echo $userLocation->longitude ; ?>}, // Default USC Talamban Campus
 			zoom: 18
 		});
-		
-			
+
+
 			var pos = {
 			  lat: document.getElementById('currentLong').value,
 			  lng: document.getElementById('currentLat').value
@@ -177,20 +177,20 @@
 				position: pos,
 				map: map,
 			});
-		
+
 
 	}
-	
-	
+
+
 	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		
+
 	getLocationFromIp() ;
 	/* infoWindow.setPosition(pos);
 		infoWindow.setContent(browserHasGeolocation ?
 						  'Error: The Geolocation service failed.' :
 						  'Error: Your browser doesn\'t support geolocation.');
-		infoWindow.open(map);	
-	*/ } 
+		infoWindow.open(map);
+	*/ }
 </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBOsw4rpr5IU_mQEmRbiz1EMA3YCtpPaw&callback=initMap&libraries=places&sensor=false&v2"></script>
