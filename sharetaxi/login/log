@@ -1,0 +1,32 @@
+Login
+
+
+1) register
+
+Format error messages for password and username
+
+2) Settings:
+
+remove validation for old password
+
+Add error format message for new password and confirm password
+
+
+
+To Be fixed:
+
+AutoLogin user
+Login with username or email
+
+
+Route ():
+
+1) Geolocation detection failing in Android and IOS (Permission needed)
+2) update_dest.php : The map is not displaying
+3) Start Time and endTime not inserted in the DB
+4) Update route should display route name in the text box
+
+
+Market:
+1) why Update ?
+2) selection criteria Range vs longitude matching
