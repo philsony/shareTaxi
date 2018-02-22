@@ -1,9 +1,0 @@
-The code is trash. I repeat,   the   code    is    trash. 
-I copy pasted old code and added the new stuff.
-Still got to properly structure it and separate it into files and what not ;_; 
-There are prolly a couple variables that have no use there soooo ...
-
-Will fix it tho :) but this is a working version soo have fun~
-
-//DELETE UPDATE
-Didn't have any UI to work with so I just placed an input to enter the route_id :(
