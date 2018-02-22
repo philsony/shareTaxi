@@ -41,12 +41,12 @@
 		$result = mysqli_query($db, $query) or die("Error $query");
 
 		// Insert to pool
-		$userId = mysqli_insert_id($db);
+		$routeId = mysqli_insert_id($db);
 		$userId = $_SESSION['id'];
 
 		$query = "
 			INSERT INTO pool (user_id, route_id)
-			VALUES ({$userId}, {$userId})
+			VALUES ({$userId}, {$routeId})
 		";
 		// Note user id must exist in users table, else the query is an error
 		$result = mysqli_query($db, $query) or die("Error $query");
