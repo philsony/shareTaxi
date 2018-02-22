@@ -28,11 +28,8 @@
 
          header("location: welcome.php");
       }else {
-<<<<<<< HEAD
          $error = "You have entered invalid email/password.";
-=======
          $error = "Your Email or Password is invalid";
->>>>>>> da52d3f8d44faff150c7da6e726997a343f31182
       }
    }
 ?>

@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
   require('../connect.php');
 
 	$sql = "SELECT * FROM pool WHERE user_id = $userId ";

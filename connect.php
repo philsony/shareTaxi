@@ -14,10 +14,5 @@ $userLocation = getUserLocation();
 
 if(strpos($_SERVER["REQUEST_URI"],"updateLocation") === false){
 ?>
-<<<<<<< HEAD
-=======
-<!-- To be removed  start -->
 <a href="<?php echo BASE_URL ; ?>login/welcome.php"><h2 style="text-align: center;">Menu</h2></a>
-<!-- To be removed  end -->
->>>>>>> da52d3f8d44faff150c7da6e726997a343f31182
 <?php }
