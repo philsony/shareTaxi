@@ -12,4 +12,4 @@
 	$userId = (isset($_SESSION['id'] )) ?  $_SESSION['id']: '' ;
 	$loginSession = (isset($_SESSION['login_user'] )) ? $_SESSION['login_user'] : '';
 
-?>
+
