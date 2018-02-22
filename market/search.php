@@ -73,8 +73,8 @@
           exit();
         }else{
           $break = explode(",",$data_received); //$_POST['hideme'] is in "LAT,LNG" format => thats why we explode
-          $searchlat = round($break[0],2); // round off to 2 places for a "RADIUS" feel
-          $searchlong = round($break[1],2);
+          $searchLatitude = round($break[0],2); // round off to 2 places for a "RADIUS" feel
+          $searchLongitude = round($break[1],2);
 
           // searches the database check read me for explanation
           $q = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t2.num_users, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest
@@ -89,7 +89,7 @@
                 INNER JOIN
                   (SELECT user_id, location_latitude, location_longitude FROM users WHERE user_id = 1) t3
                 WHERE t2.num_users < 4 AND ((ROUND(t3.location_latitude,2) = ROUND(t1.route_origlat,2) AND ROUND(t3.location_longitude,2) = ROUND(t1.route_origlong,2))
-                                             OR (ROUND(t1.route_destlat,2) = {$searchlat} AND ROUND(t1.route_destlong,2) = {$searchlong}))
+                                             OR (ROUND(t1.route_destlat,2) = {$searchLatitude} AND ROUND(t1.route_destlong,2) = {$searchLongitude}))
                 GROUP BY t2.route_id DESC";
 
           $result = mysqli_query($conn, $q);

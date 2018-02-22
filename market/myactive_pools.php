@@ -78,7 +78,7 @@
             while($data = mysqli_fetch_assoc($result)){
 
                 //gets all the necessary data from database given that you OWN THE ROUTE
-                $querythree = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest, t2.num_users
+                $queryThree = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest, t2.num_users
                                 FROM
                                 (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`,
                                 r.destination_longitude as `route_destlong`, r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`,
@@ -88,24 +88,24 @@
                                  INNER JOIN
                                  (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                                  ON t1.route_id = t2.route_id";
-                $resultQuery = mysqli_query($conn,$querythree);
+                $resultQuery = mysqli_query($conn,$queryThree);
                 if(mysqli_num_rows($resultQuery) != 0){
-                    $pool_data = mysqli_fetch_assoc($resultQuery); //since also, only one result set
+                    $poolData = mysqli_fetch_assoc($resultQuery); //since also, only one result set
 
                     // these are the necessary data for pools
                     echo "<div class='row showborder latlongdata' id='info'>";
                     echo "<div class='col-xs-offset-2 col-xs-8'>";
-                      echo "<p class='originlatlong'>Trip Origin: {$pool_data['add_orig']}</p>";
-                      echo "<p class='destlatlong'>Trip Destination: {$pool_data['add_dest']}</p>";
-                      echo "<p class='num_user_pool'>Number of sharers: {$pool_data['num_users']}</p>";
-                      echo "<p class='cost'>Trip cost: {$pool_data['route_cost']}</p>";
-                      echo "<p class='status'>Pool Status: {$pool_data['route_status']}</p>";
-                      echo "<p class='pool_id'>Pool ID: {$pool_data['pool_id']}</p>";
+                      echo "<p class='originlatlong'>Trip Origin: {$poolData['add_orig']}</p>";
+                      echo "<p class='destlatlong'>Trip Destination: {$poolData['add_dest']}</p>";
+                      echo "<p class='num_user_pool'>Number of sharers: {$poolData['num_users']}</p>";
+                      echo "<p class='cost'>Trip cost: {$poolData['route_cost']}</p>";
+                      echo "<p class='status'>Pool Status: {$poolData['route_status']}</p>";
+                      echo "<p class='pool_id'>Pool ID: {$poolData['pool_id']}</p>";
 
                       //INSERT MESSAGE MODULE
                       echo "<form method='POST' action ='#' class='options'>";
-                        echo "<input type='text' value={$pool_data['route_id']} name='route_id' class='hiddeninput'>";
-                        echo "<input type='text' value={$pool_data['pool_id']} name='pool_id' class='hiddeninput'>";
+                        echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
+                        echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
                         echo "<button class='btn btn-primary' name='submitme'>Message Group</button>";
                       echo "</form>";
 
@@ -113,23 +113,31 @@
                       $query = "SELECT MIN(pool_id) as `pool_id`, user_id, route_id FROM pool WHERE route_id = {$data['r_id']}";
                       $result2 = mysqli_query($conn,$query);
                       $info = mysqli_fetch_assoc($result2); //since it's always going to be one result only
-                      $owner_id = $info['user_id']; //checks if you own the route
+                      $ownerId = $info['user_id']; //checks if you own the route
 
-                      if($owner_id == $_SESSION['id']){
+                      if($ownerId == $_SESSION['id']){
 
                       //INSERT UPDATE MODULE
                       echo "<form method='POST' action ='".BASE_URL."route/update_src.php' class='options'>";
-                        echo "<input type='text' value={$pool_data['route_id']} name='route_id' class='hiddeninput'>";
-                        echo "<input type='text' value={$pool_data['pool_id']} name='pool_id' class='hiddeninput'>";
-                        echo "<button class='btn btn-success' name='submitme'>Update Status</button>";
+                        echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
+                        echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
+                        echo "<button class='btn btn-success' name='submitme'>Edit</button>";
                       echo "</form>";
 
                       //INSERT DELETE MODULE
                       echo "<form method='POST' action ='".BASE_URL."route/delete.php' class='options'>";
-                        echo "<input type='text' value={$pool_data['route_id']} name='route_id' class='hiddeninput'>";
-                        echo "<input type='text' value={$pool_data['pool_id']} name='pool_id' class='hiddeninput'>";
+                        echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
+                        echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
                         echo "<button class='btn btn-danger' name='submitme'>Delete Active Pool</button>";
                       echo "</form>";
+
+                      echo "<form method='POST' action='".BASE_URL."route/updateRouteStatus.php' class='options'>";
+                        echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
+                        echo "<button class='btn btn-danger' type='submit'>Finish</button>";
+                      echo "</form>";
+
+                      echo "<a href='".BASE_URL."route/updateRouteStatus.php?id={$poolData['pool_id']}'><button class='btn btn-danger' name='submitme'>Delete Active Pool</button></a>";
+
 
                     }
                     echo "</div>";

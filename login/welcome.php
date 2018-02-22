@@ -1,7 +1,7 @@
 <?php
   require('../connect.php');
 
-	$sql = "SELECT * FROM pool WHERE user_id = $user_id ";
+	$sql = "SELECT * FROM pool WHERE user_id = $userId ";
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	$count = mysqli_num_rows($result);
@@ -17,8 +17,8 @@
       <h1>Welcome <?php echo $_SESSION['login_user']; ?></h1>
 	  <?php
 		if($count>0){
-			$route_id = $row['route_id'];
-			$sql = "SELECT * FROM route WHERE route_id = '$route_id'";
+			$routeId = $row['route_id'];
+			$sql = "SELECT * FROM route WHERE route_id = '$routeId'";
 			$result_2 = mysqli_query($db,$sql);
 			$row_2 = mysqli_fetch_array($result_2,MYSQLI_ASSOC);
 			$_SESSION['pool_id'] = $row['pool_id'];

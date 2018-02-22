@@ -7,7 +7,7 @@
 		header('location:create_src.php');
 	}
 	require "../core.php";
-	
+
 
 	// Redirects unauthorized/unintentional access
 	if( !isset($_POST['destLat']) || !isset($_POST['destLong']) ) {
@@ -41,17 +41,17 @@
 		$result = mysqli_query($db, $query) or die("Error $query");
 
 		// Insert to pool
-		$routeId = mysqli_insert_id($db);
+		$userId = mysqli_insert_id($db);
 		$userId = $_SESSION['id'];
 
 		$query = "
 			INSERT INTO pool (user_id, route_id)
-			VALUES ({$userId}, {$routeId})
+			VALUES ({$userId}, {$userId})
 		";
 		// Note user id must exist in users table, else the query is an error
 		$result = mysqli_query($db, $query) or die("Error $query");
 
-		echo "Successful";
+		//echo "Successful";
 
 		// Return to homepage
 		// header('location:homescreen.php');

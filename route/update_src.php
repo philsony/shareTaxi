@@ -51,9 +51,9 @@
 		$result = mysqli_query($db, "SELECT * FROM pool WHERE user_id = {$_SESSION['id']} LIMIT 1");
 		$row = mysqli_fetch_assoc($result);
 
-		$routeId = $row['route_id'];
+		$userId = $row['route_id'];
 
-		$result = mysqli_query($db, "SELECT * from route WHERE route_id = {$routeId} LIMIT 1");
+		$result = mysqli_query($db, "SELECT * from route WHERE route_id = {$userId} LIMIT 1");
 		$row = mysqli_fetch_assoc($result);
 
 		echo $row['origin_latitude'];

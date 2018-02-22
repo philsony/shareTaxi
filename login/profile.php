@@ -9,7 +9,7 @@
    </head>
 
    <body>
-      <h1>Welcome <?php echo $login_session; ?></h1>
+      <h1>Welcome <?php echo $loginSession; ?></h1>
 
 
         <h2><a href = "settings.php">Settings</a></h2>

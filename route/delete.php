@@ -1,13 +1,13 @@
 <?php
-  require('../connect.php');
-
-    $route_id = $_POST["route_id"];
+    require('../connect.php');
+    $return = 'Location: '.BASE_URL.'market/testmarket.php?action=delete';
+    $routeId = $_POST["route_id"];
     //$deletecq = "DELETE FROM contributions WHERE contribution_id='".$contrid."'";
-    $delete_req2 = "DELETE FROM pool WHERE route_id ='".$route_id."'";
-    $delete_req = "DELETE FROM route WHERE route_id ='".$route_id."'";
+    $deleteReq2 = "DELETE FROM pool WHERE route_id ='".$routeId."'";
+    $deleteReq = "DELETE FROM route WHERE route_id ='".$routeId."'";
     //$delete = mysqli_query($conn, $deletecq);
-    $delete2 = mysqli_query($db, $delete_req2) or die("Error $delete_req");
-    $delete = mysqli_query($db, $delete_req) or die("Error $delete_req");
+    $delete2 = mysqli_query($db, $deleteReq2) or die("Error $deleteReq");
+    $delete = mysqli_query($db, $deleteReq) or die("Error $deleteReq");
 
-    echo "Successful!";
+    header($return);
 ?>
