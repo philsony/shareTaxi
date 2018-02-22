@@ -1,7 +1,7 @@
 <?php
   require('../connect.php');
   $response = array();
-  $return = BASE_URL.'market/testmarket.php?location=true';
+  $return = BASE_URL.'market/testmarket.php?action=Updated&entity=Location';
 
   if(isset($_POST['latitude']) && isset($_POST['longitude'])  ){
     $userchange = "UPDATE users SET location_longitude = '{$_POST['longitude']}' , location_latitude = '{$_POST['latitude']}' WHERE user_id = {$userId} ";
