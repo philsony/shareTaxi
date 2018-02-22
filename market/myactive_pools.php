@@ -6,6 +6,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
     <script src='js/jquery-3.2.1.min.js'></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -46,6 +47,11 @@
     </style>
   </head>
   <body>
+
+    <?php
+      include('../core/alerts.php');
+     ?>
+
   <div class='container-fluid'>
     <div class='row showborder'>
       <!-- go to active pools page -->
@@ -74,8 +80,10 @@
           $q = "SELECT route_id as `r_id` FROM route WHERE status != 'FINISHED'";
           $result = mysqli_query($conn,$q);
           $rows = mysqli_num_rows($result);
+          $numberOfRoutes = 0 ;
           if($rows != 0){ //checks if there are any ROUTES  (pools) ongoing
             while($data = mysqli_fetch_assoc($result)){
+
 
                 //gets all the necessary data from database given that you OWN THE ROUTE
                 $queryThree = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest, t2.num_users
@@ -89,7 +97,10 @@
                                  (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                                  ON t1.route_id = t2.route_id";
                 $resultQuery = mysqli_query($conn,$queryThree);
+
+
                 if(mysqli_num_rows($resultQuery) != 0){
+                    $numberOfRoutes++;
                     $poolData = mysqli_fetch_assoc($resultQuery); //since also, only one result set
 
                     // these are the necessary data for pools
@@ -142,14 +153,17 @@
                     echo "</div>";
                   }
             }
-          }else{
+          }
+
+
+           if($numberOfRoutes == 0){
 
             //if there exist no route that you created, this option is prompted
             echo "<div class='row'>";
             echo "<center><p class='h1'>You do not currently own a pool.</center>";
             echo "</div>";
             echo "<div class='row'>";
-            echo "<center><button class='btn btn-success'>Create Pool</button></center>";
+            echo "<center><a href='".BASE_URL."market/testmarket.php'><button class='btn btn-success'>Create Pool</button></a></center>";
             echo "</div>";
           }
       ?>
