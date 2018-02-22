@@ -7,10 +7,10 @@
 
       $hashed = hash('sha256', $_POST['password']);
 
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $myemail = mysqli_real_escape_string($db,$_POST['email']);
       $mypassword = mysqli_real_escape_string($db,$hashed);
 
-      $sql = "SELECT * FROM users WHERE name = '$myusername' AND password = '$mypassword'";
+      $sql = "SELECT * FROM users WHERE email = '$myemail' AND password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
@@ -23,12 +23,12 @@
       //Set ID and Username for session.php to access
          //session_register("myusername");
          $_SESSION['id'] = $row['user_id'];
-         $_SESSION['login_user'] = $myusername;
-         $_SESSION['user'] = $row ;
+         $_SESSION['login_user'] = $row['name'];
+         $_SESSION['user'] = $row;
 
          header("location: welcome.php");
       }else {
-         $error = "Your Login Name or Password is invalid";
+         $error = "Your Email or Password is invalid";
       }
    }
 ?>
