@@ -13,7 +13,7 @@
       #map {
         height: 100%;
         display:none;
-      }
+      } 
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
