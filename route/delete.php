@@ -1,6 +1,6 @@
 <?php
     require('../connect.php');
-    $return = 'Location: '.BASE_URL.'market/testmarket.php?action=delete';
+    $return = 'Location: '.BASE_URL.'market/myactive_pools.php?action=deleted&entity=Pool';
     $routeId = $_POST["route_id"];
     //$deletecq = "DELETE FROM contributions WHERE contribution_id='".$contrid."'";
     $deleteReq2 = "DELETE FROM pool WHERE route_id ='".$routeId."'";

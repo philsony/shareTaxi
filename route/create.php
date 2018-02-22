@@ -56,5 +56,5 @@
 		// Return to homepage
 		// header('location:homescreen.php');
 		//Return to homepage
-		header(HOMEPAGE);
+		header(HOMEPAGE.'?action=created&entity=route');
 	}

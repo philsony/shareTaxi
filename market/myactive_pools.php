@@ -13,7 +13,7 @@
       #map {
         height: 100%;
         display:none;
-      } 
+      }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
@@ -128,15 +128,13 @@
                       echo "<form method='POST' action ='".BASE_URL."route/delete.php' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
-                        echo "<button class='btn btn-danger' name='submitme'>Delete Active Pool</button>";
+                        echo "<button class='btn btn-danger' name='submitme'>Delete  Pool</button>";
                       echo "</form>";
 
                       echo "<form method='POST' action='".BASE_URL."route/updateRouteStatus.php' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
-                        echo "<button class='btn btn-danger' type='submit'>Finish</button>";
+                        echo "<button class='btn btn-primary' type='submit'>Finish</button>";
                       echo "</form>";
-
-                      echo "<a href='".BASE_URL."route/updateRouteStatus.php?id={$poolData['pool_id']}'><button class='btn btn-danger' name='submitme'>Delete Active Pool</button></a>";
 
 
                     }

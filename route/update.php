@@ -8,7 +8,7 @@
 	$destLat = floatval($_POST['destLat']);
 	$destLong = floatval($_POST['destLong']);
 	$userID = $_POST['ID'];
-  $return = 'Location: '.BASE_URL.'market/testmarket.php?action=update';
+  $return = 'Location: '.BASE_URL.'login/welcome.php?action=updated&entity=Route';
 
 	// Look for userID in pool
 	$query = "SELECT * FROM pool WHERE user_id = $userID";

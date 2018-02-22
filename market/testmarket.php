@@ -8,6 +8,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
     <script src='js/jquery-3.2.1.min.js'></script>
     <style>
 
@@ -59,6 +60,9 @@
     </style>
   </head>
   <body>
+    <?php
+      include('../core/alerts.php');
+     ?>
   <div class='container-fluid'>
     <div class='row showborder'>
       <!-- go to active pools page -->

@@ -11,9 +11,13 @@
 
    <head>
       <title>Welcome </title>
+        <link rel="stylesheet" href="../assets/css/global.css">
    </head>
 
    <body>
+     <?php
+       include('../core/alerts.php');
+      ?>
       <h1>Welcome <?php echo $_SESSION['login_user']; ?></h1>
 	  <?php
 		if($count>0){
