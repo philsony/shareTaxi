@@ -75,7 +75,7 @@
 
     <!-- contents of the body or LIST OF POOLS availalbe -->
     <div id = 'list'>
-      <?php
+      <?php 
           // search for all existing routes in the table and FIND if the user owns any
           $q = "SELECT route_id as `r_id` FROM route WHERE status != 'FINISHED'";
           $result = mysqli_query($conn,$q);
@@ -86,7 +86,8 @@
 
 
                 //gets all the necessary data from database given that you OWN THE ROUTE
-                $queryThree = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest, t2.num_users
+                $queryThree = "SELECT 
+                    t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest, t2.num_users
                                 FROM
                                 (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`,
                                 r.destination_longitude as `route_destlong`, r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`,
@@ -112,7 +113,7 @@
                       echo "<p class='cost'>Trip cost: {$poolData['route_cost']}</p>";
                       echo "<p class='status'>Pool Status: {$poolData['route_status']}</p>";
                       echo "<p class='pool_id'>Pool ID: {$poolData['pool_id']}</p>";
-
+                 
                       //INSERT MESSAGE MODULE
                       echo "<form method='POST' action ='#' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
