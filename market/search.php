@@ -78,6 +78,7 @@
           $searchLongitude = round($break[1],2);
 
           // searches the database check read me for explanation
+          //23 feb : Used the input string instead of the long/lat.
           $q = "SELECT t1.*, t2.* FROM
                 (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
                 r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`

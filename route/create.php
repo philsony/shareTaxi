@@ -25,7 +25,7 @@
 
 
 	// Confirms creation of route to prevent duplicates lol feel free to change, thessa~*
-	$query = "SELECT * FROM route WHERE origin_latitude = {$srcLat} AND origin_longitude = {$srcLong} AND destination_latitude = {$destLat} AND destination_longitude = {$destLong}";
+	$query = "SELECT * FROM route WHERE origin_latitude = {$srcLat} AND origin_longitude = {$srcLong} AND destination_latitude = {$destLat} AND destination_longitude = {$destLong} AND route_status = 'Waiting'";
 	$result = mysqli_query($db, $query);
 	$data = mysqli_fetch_array($result, MYSQLI_NUM);
 	if ($data[0] >= 1) {
