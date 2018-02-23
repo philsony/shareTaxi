@@ -44,7 +44,7 @@
         <div class="blue-overlay"></div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4 col-xs-12 col-md-offset-4">
+                <div class="col-md-4 col-xs-10 col-xs-offset-1 col-md-offset-4">
                     <div class="title">ShareTaxi</div>
                     <form action= "" method = "post">
                         <div class="error"><?php echo $error; ?></div>
