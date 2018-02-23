@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+@import url('../../../css/style.css');
+
+<<<<<<< HEAD
 body, div {
     margin: 0;
     padding: 0;
@@ -9,6 +12,19 @@ a, a:hover {
 }
 .row {
 	margin-bottom: 8px;
+=======
+<<<<<<< HEAD
+body, div {
+    margin: 0;
+    padding: 0;
+}
+a, a:hover {
+    text-decoration: none;
+    color: #000;
+}
+.row {
+	margin-bottom: 8px;
+>>>>>>> da52d3f8d44faff150c7da6e726997a343f31182
 =======
 body, div {
     margin: 0;
