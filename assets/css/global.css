@@ -1,7 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+html, body {
+  font-size: 17px !important;
+  background-color: #292c35 !important;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: 'Varela Round';
+  color: #fff;
+}
+
+.bg-light {
+  background-color: #2d3642;
+}
+
+.box {
+  border-radius: 20px;
+  padding: 45px;
+  margin-bottom: 30px;
+  font-family: 'Circular Std';
+}
+
 .customAlert {
   text-align: center;
   background: green;
   color: white;
   font-size: 15px;
+}
+
+@media screen and (max-width: 400px) {
+  .box {
+    padding: 15px;
+  }
 }
 

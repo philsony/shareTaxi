@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+html, body {
+    font-size: 16px !important;
+}
+
+.activelink {
+    background: #0eb6b9;
+    font-size: 12px;
+    color: #fff;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    border-radius: 99px;
+    display: inline-block;
+    font-weight: bold;
+    transition: 1s all;
+}
+
+.activelink:hover {
+    background: #076869;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+input {
+    background-color: transparent;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 5px;
+    transition: 1s all;
+}
+
+input:focus {
+    border-bottom: 2px solid #fff;
+    box-shadow: none;
+    outline: none;
+}
+
+button {
+    background-color: #0eb6b9 !important;
+    color: #fff;
+    border: 0;
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px 12px !important;
+    border-radius: 5px;
+    transition: 1s all;
+    font-size: 13px;
+    font-weight: bold;
+    border: 0 !important;
+}
+
+button:hover {
+    background-color: #076869 !important;
+}
+
+.inline {
+    display: inline;
+}
+
+@media screen and (max-width: 600px) {
+    .extendonmobile {
+        padding: 40px;
+    }
+}
