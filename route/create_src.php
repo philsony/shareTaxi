@@ -59,11 +59,16 @@
 			center: {lat: 10.3541, lng: 123.9116}, // Default USC Talamban Campus
 			zoom: 18
 		});
-
+		
+		var input = document.getElementById('source');
+		var options = {
+			componentRestrictions: {country: "ph"}
+		};
+		
 		infoWindow = new google.maps.InfoWindow;
 		geocoder = new google.maps.Geocoder;
-		searchBox = new google.maps.places.SearchBox(document.getElementById('source'));
-		map.controls.push(document.getElementById('source'));
+		searchBox = new google.maps.places.Autocomplete(input, options);
+		map.controls.push(input);
 
 		var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
