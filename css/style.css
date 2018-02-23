@@ -29,7 +29,7 @@ html {
 
 .login {
 	padding-top: 15vh;
-	background-image: url("https://images.pexels.com/photos/167684/pexels-photo-167684.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
+	background-image: url("https://www.treadstonelaw.co.uk/wp-content/uploads/2014/06/taxi.png");
 	background-attachment: fixed;
 	background-size: cover;
 }
@@ -46,7 +46,7 @@ html {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	opacity: .9;
+	opacity: .95;
 }
 
 .login label {
@@ -92,4 +92,18 @@ html {
 	color: #fff;
 	text-transform: uppercase;
 	font-weight: normal;
+}
+
+.login .error {
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+	.login form {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
