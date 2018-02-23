@@ -78,8 +78,7 @@
           $searchLongitude = round($break[1],2);
 
           // searches the database check read me for explanation
-          $q = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t2.num_users, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest
-                FROM
+          $q = "SELECT t1.*, t2.* FROM
                 (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
                 r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`
                 FROM route r, pool p, users u
@@ -87,12 +86,10 @@
                 INNER JOIN
                 (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                 ON t1.route_id = t2.route_id
-                INNER JOIN
-                  (SELECT user_id, location_latitude, location_longitude FROM users WHERE user_id = 1) t3
-                WHERE t2.num_users < 4 AND ((ROUND(t3.location_latitude,2) = ROUND(t1.route_origlat,2) AND ROUND(t3.location_longitude,2) = ROUND(t1.route_origlong,2))
-                                             OR (ROUND(t1.route_destlat,2) = {$searchLatitude} AND ROUND(t1.route_destlong,2) = {$searchLongitude}))
-                GROUP BY t2.route_id DESC";
-
+                WHERE  t1.add_orig LIKE '%".$_POST['latlng']."%' 
+               ";
+          
+   
           $result = mysqli_query($conn, $q);
           $rows = mysqli_num_rows($result);
           if($rows != 0){ //check if ther exist a result
@@ -124,7 +121,7 @@
             echo "<center><p class='h1'>No pools available, sorry.</center>";
             echo "</div>";
             echo "<div class='row'>";
-            echo "<center><button class='btn btn-success'>Create Pool</button></center>";
+            echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></a></center>";
             echo "</div>";
           }
         }
