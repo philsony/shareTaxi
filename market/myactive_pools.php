@@ -75,7 +75,7 @@
 
     <!-- contents of the body or LIST OF POOLS availalbe -->
     <div id = 'list'>
-<<<<<<< HEAD
+
       <?php 
 
           // search for all existing routes in the table and FIND if the user owns any

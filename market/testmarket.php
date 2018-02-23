@@ -85,7 +85,6 @@
     </div>
 
     <!-- contents of the body or LIST OF POOLS availalbe -->
-<<<<<<< HEAD
     <div id = 'list'>     <?php
          echo "<div class='row ".$getLocationdata."'>";
           echo "<center><p class='h1'>We need to get your location first</p></center>";
@@ -96,18 +95,6 @@
   
 
         //SEARCHES THE DATABASE FOR THE DATA WITH THE LAT,LNG CODE EQUAL TO THE USER'S CURRENT LAT,LNG CODE. THIS IS THE DEFAULT OF A MARKET
-    <div id = 'list'>
-        <?php
-         echo "<div class='row ".$getLocationdata."'>";
-          echo "<center><p class='h1'>We need to get your location first</p></center>";
-          echo "</div>";
-          echo "<div id=\"geolocationButton\" class='row center ".$getLocationdata."'>";
-          echo "<center><button onclick=\"getLocation()\" class='btn btn-success'>Click Here to set your location</button></center>";
-          echo "</div></br>";
-  
-
-        //SEARCHES THE DATABASE FOR THE DATA WITH THE LAT,LNG CODE EQUAL TO THE USER'S CURRENT LAT,LNG CODE. THIS IS THE DEFAULT OF A MARKET
-
         $q = "SELECT  (
         (
             ACOS(
@@ -119,9 +106,17 @@
                     ) * 180 / PI()) * 60 * 1.1515) AS distance
                     
                     , t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t2.num_users, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest
-
+              FROM
+              (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
+              r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`
+              FROM route r, pool p, users u
+              WHERE p.user_id = u.user_id AND p.route_id = r.route_id AND r.status = 'Waiting') t1
+              INNER JOIN
+                (SELECT route_id, COUNT(*) as num_users
+                FROM pool GROUP BY route_id) t2
+                ON t1.route_id = t2.route_id
+                WHERE t2.num_users < 4
                 GROUP BY t2.route_id DESC ORDER BY distance";
-
 
         //$query_two = "SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id";
 
@@ -139,9 +134,7 @@
               echo "<p class='cost'>Trip cost: {$data['route_cost']}</p>";
               echo "<p class='status'>Pool Status: {$data['route_status']}</p>";
               echo "<p class='pool_id'>Pool ID: {$data['pool_id']}</p>";
-
             echo "<p class='pool_id'>Distance between you and the owner: ".number_format($data['distance'])." KM</p>";
-
 
               // allows the user to join a pool, rejects if 4 (doesnt happen anyway since it wont show up here due to SQL restriction of pools sharer > 4)
               echo "<form method='POST' action ='".BASE_URL."market/joinpool.php'>";
@@ -162,14 +155,7 @@
           echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></a></center>";
           echo "</div>";
 
-
-          echo "<div class='row ".$getLocationdata."'>";
-          echo "<center><p class='h1'>We need to get your location first</p></center>";
-          echo "</div>";
-          echo "<div id=\"geolocationButton\" class='row center ".$getLocationdata."'>";
-          echo "<center><button onclick=\"getLocation()\" class='btn btn-success'>Click Here to set your location</button></center>";
-          echo "</div>";
-
+       
         }
       ?>
     </div>
