@@ -3,7 +3,7 @@
   require('../connect.php');
 ?>
   <head>
-    <title>Simple Map</title>
+    <title>Market</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
