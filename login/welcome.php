@@ -31,7 +31,7 @@
 				$routeId = $row['route_id'];
 				$sql = "SELECT * FROM route WHERE route_id = '$routeId'";
 				$result2 = mysqli_query($db,$sql);
-				$row2 = mysqli_fetch_array($result_2,MYSQLI_ASSOC);
+				$row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 				$_SESSION['pool_id'] = $row['pool_id'];
 				if($row2['status']!="FINISHED"){
 				echo '<div>	

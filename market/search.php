@@ -3,7 +3,7 @@
   require('../connect.php');
 ?>
   <head>
-    <title>Simple Map</title>
+    <title>Market</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -104,7 +104,7 @@
                 echo "<p class='num_user_pool'>Number of sharers: {$data['num_users']}</p>";
                 echo "<p class='cost'>Trip cost: {$data['route_cost']}</p>";
                 echo "<p class='status'>Pool Status: {$data['route_status']}</p>";
-                echo "<p class='pool_id'>Pool ID: {$data['pool_id']}</p>";
+                echo "<p class='pool_id'>Route ID: {$data['route_id']}</p>";
                 echo "<form method='POST' action ='joinpool.php'>";
                   echo "<input type='text' value={$data['route_id']} name='route_id' class='hiddeninput'>";
                   echo "<input type='text' value={$data['pool_id']} name='pool_id' class='hiddeninput'>";
