@@ -101,6 +101,25 @@ html {
 	margin-bottom: 5px;
 }
 
+.welcome {
+	background-color: #27295c;
+	color: #fff !important;
+	font-size: 20px !important;
+	font-family: 'Circular Std' !important;
+}
+
+.welcome a {
+	color: #fff !important;
+}
+
+.welcome .yellow {
+	background-color: #f8c327;
+}
+
+.welcome .icon {
+	padding: 15px 0;
+}
+
 @media screen and (max-height: 500px) {
 	.login {
 		padding-top: 5vh;

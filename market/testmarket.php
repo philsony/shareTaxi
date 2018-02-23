@@ -4,7 +4,7 @@
 ?><!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>Market</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -60,6 +60,7 @@
     </style>
   </head>
   <body>
+    <?php require("../main.php"); ?>
     <?php
       include('../core/alerts.php');
      ?>
