@@ -24,17 +24,19 @@
 	  <?php
 		if($count>0){
 			while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-			$routeId = $row['route_id'];
-			$sql = "SELECT * FROM route WHERE route_id = '$routeId'";
-			$result_2 = mysqli_query($db,$sql);
-			$row_2 = mysqli_fetch_array($result_2,MYSQLI_ASSOC);
-			$_SESSION['pool_id'] = $row['pool_id'];
-			echo '<div>	
-					<div>Route origin : '.$row_2['origin_address'].'</div>
-					<div>Route destination : '.$row_2['destination_address'].'</div>
-					<div>Route is : '.$row_2['status'].'</div>
-					<div><a href = "messaging.php">Message</a></div>
-				</div>';
+				$routeId = $row['route_id'];
+				$sql = "SELECT * FROM route WHERE route_id = '$routeId'";
+				$result2 = mysqli_query($db,$sql);
+				$row2 = mysqli_fetch_array($result_2,MYSQLI_ASSOC);
+				$_SESSION['pool_id'] = $row['pool_id'];
+				if($row2['status']!="FINISHED"){
+				echo '<div>	
+						<div>Route origin : '.$row2['origin_address'].'</div>
+						<div>Route destination : '.$row2['destination_address'].'</div>
+						<div>Route is : '.$row2['status'].'</div>
+						<div><a href = "messaging.php">Message</a></div>
+					</div>';
+				}
 			}
 		}
 
