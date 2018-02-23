@@ -112,7 +112,15 @@ html {
 		margin-left: 1vw;
 		margin-right: 1vw;
 	}
+}
 
+@media screen and (max-width: 450px) {
+	.login .title {
+		font-size: 40px;
+	}
+}
+
+@media screen and (max-width: 300px) {
 	.login .title {
 		font-size: 30px;
 	}
