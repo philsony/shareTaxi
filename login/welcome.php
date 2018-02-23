@@ -3,7 +3,7 @@
 
 	$sql = "SELECT * FROM pool WHERE user_id = $userId ";
     $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    
 	$count = mysqli_num_rows($result);
 
 ?>
@@ -23,6 +23,7 @@
       	<h1>Welcome <?php echo $_SESSION['login_user']; ?></h1>
 	  <?php
 		if($count>0){
+			while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
 			$routeId = $row['route_id'];
 			$sql = "SELECT * FROM route WHERE route_id = '$routeId'";
 			$result_2 = mysqli_query($db,$sql);
@@ -32,9 +33,7 @@
 					<div>Route is : '.$row_2['status'].'</div>
 					<div><a href = "messaging.php">Message</a></div>
 				</div>';
-			// may be added later, cuz coordinates wouldn't exactly look appealing to the users
-			//<div>Route Origin is : ".$origin."</div>
-			//<div>Route Destination is : ".$dest."</div>
+			}
 		}
 
 	  ?>
