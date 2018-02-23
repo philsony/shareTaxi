@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/market.css">
     <script src='js/jquery-3.2.1.min.js'></script>
     <style>
 
@@ -35,7 +36,7 @@
       .center {
         text-align: center;
       }
-    .showborder{
+    .{
       border:3px solid black;
     }
     .latlongdata{
@@ -60,33 +61,33 @@
     </style>
   </head>
   <body>
-    <?php require("../main.php"); ?>
     <?php
+      include('../main.php');
       include('../core/alerts.php');
      ?>
+    <br>
   <div class='container-fluid'>
-    <div class='row showborder'>
-      <!-- go to active pools page -->
-      <div class='col-xs-offset-1 col-xs-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2'>
-        <a href='myactive_pools.php'><p class='h4'>Active Pools</p></a>
+    <div class='row'>
+      <div class="col-md-10 col-md-offset-1 col-xs-offset-1 col-xs-10">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-5 col-xs-12">
+              <a href='testmarket.php'><p class='h4 activelink'>Market</p></a> &nbsp;
+              <a href='myactive_pools.php'><p class='h4 activelink'>Active Pools</p></a>
+            </div>
+            <div class='extendonmobile'></div>
+            <div class="col-md-3 col-md-offset-3 col-xs-12">
+              <form style='display: inline; text-align: right;' id='searchform' method='POST' action='search.php'>
+                <input type='text' id='searchthis' value="" name='latlng' placeholder='Where to go?'>
+                <input type'text' id='hiddentext' name='hideme'>
+                <button name='sub' type='submit' id='sub_me'>Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br><br>
       </div>
-      <!-- go to market page -->
-      <div class='col-xs-3 col-xs-offset-1 col-md-3 col-md-offset-2 col-lg-offset-2 col-lg-3 header'>
-        <a href='testmarket.php'><p class='h4'>Market</p></a>
-      </div>
-
-      <!-- search bar -->
-      <div class='col-xs-4 col-md-4 col-lg-4'>
-        <form id='searchform' method='POST' action='search.php'>
-          <input type='text' id='searchthis' value="" name='latlng' placeholder='Where to go?'>
-          <input type'text' id='hiddentext' name='hideme'>
-          <button name='sub' type='submit' id='sub_me'>Search</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- contents of the body or LIST OF POOLS availalbe -->
-    <div id = 'list'>     <?php
+      <div id = 'list'>     <?php
          echo "<div class='row ".$getLocationdata."'>";
           echo "<center><p class='h1'>We need to get your location first</p></center>";
           echo "</div>";
@@ -127,21 +128,20 @@
           while($data = mysqli_fetch_assoc($result)){
 
             //dispalys the necessary data for the pools
-            echo "<div class='row showborder latlongdata' id='info'>";
-            echo "<div class='col-xs-offset-2 col-xs-8'>";
-              echo "<p class='originlatlong'>Trip Origin: {$data['add_orig']}</p>";
-              echo "<p class='destlatlong'>Trip Destination: {$data['add_dest']}</p>";
-              echo "<p class='num_user_pool'>Number of sharers: {$data['num_users']}</p>";
-              echo "<p class='cost'>Trip cost: {$data['route_cost']}</p>";
-              echo "<p class='status'>Pool Status: {$data['route_status']}</p>";
-              echo "<p class='pool_id'>Pool ID: {$data['pool_id']}</p>";
+            echo "<div class='row  latlongdata' id='info'>";
+            echo "<div class='col-xs-offset-2 col-md-6 col-md-offset-3 col-xs-8 box bg-light'>";
+              echo "<p class='originlatlong'>From: {$data['add_orig']}</p>";
+              echo "<p class='destlatlong'>To: {$data['add_dest']}</p>";
+              echo "<p class='num_user_pool'>Sharers: {$data['num_users']}</p>";
+              echo "<p class='cost'>Cost: {$data['route_cost']}</p>";
+              echo "<p class='status'>Status: {$data['route_status']}</p>";
             echo "<p class='pool_id'>Distance between you and the owner: ".number_format($data['distance'])." KM</p>";
 
               // allows the user to join a pool, rejects if 4 (doesnt happen anyway since it wont show up here due to SQL restriction of pools sharer > 4)
               echo "<form method='POST' action ='".BASE_URL."market/joinpool.php'>";
                 echo "<input type='text' value={$data['route_id']} name='route_id' class='hiddeninput'>";
                 echo "<input type='text' value={$data['pool_id']} name='pool_id' class='hiddeninput'>";
-                echo "<button class='btn btn-success' name='submitme'>Join Pool</button>";
+                echo "<button style='width: auto !important; font-size: 16px;' class='btn btn-success' name='submitme'>Join Pool</button>";
               echo "</form>";
             echo "</div>";
             echo "</div>";
@@ -160,7 +160,6 @@
         }
       ?>
     </div>
-    <h2><a href = "<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
   </div>
 
 

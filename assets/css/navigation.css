@@ -1,4 +1,16 @@
 .navigation .trigger {
     position: absolute;
-    font-size: 20px;
+    font-size: 25px;
+    left: 20px;
+    top: 20px;
+    color: #fff;
+    z-index: 999;
+}
+
+.navigation .trigger * {
+    transition: 1s all;
+}
+
+.navigation .trigger a i:hover {
+    color: #0eb6b9;
 }

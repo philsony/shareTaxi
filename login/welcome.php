@@ -10,11 +10,10 @@
 <html>
    <head>
       <title>Welcome </title>
-        <link rel="stylesheet" href="../assets/css/global.css">
-				<link rel="stylesheet" href="css/general_style.css?<?php echo rand(0, 100); ?>" />
+        		<link rel="stylesheet" href="../assets/css/global.css">
 				<link rel="stylesheet" href="css/bootstrap.min.css" />
 				<link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 				<link rel="stylesheet" href="css/general_style.css" />
    </head>
    <body class="welcome">
@@ -56,9 +55,9 @@
 							<div class="col-md-5 icon text-center">
 								<a href = "profile.php">
 									<p><h2><i class="fa fa-user"></i></h2></p>
-									<p><h3>Profile<h3></p>
+									<p><h4>Profile<h4></p>
 								</a>
-							</div>
+							</div>	
 							<div class="col-md-5 icon col-md-offset-1 text-center">
 								<a href = "<?php echo BASE_URL ; ?>/market/myactive_pools.php">
 									<p><h2><i class="fa fa-car"></i></h2></p>
@@ -66,22 +65,20 @@
 								</a>
 							</div>
 						</div>
-						<br>
 						<div class="row">
 							<div class="col-md-5 text-center">
-        				<a href="<?php echo BASE_URL ; ?>/route/create_src.php">
+        						<a href="<?php echo BASE_URL ; ?>/route/create_src.php">
 									<p><h2><i class="fa fa-road"></i></h2></p>
 									<p><h4>Create Route</h4></p>
 								</a>
 							</div>
 							<div class="col-md-5 col-md-offset-1 text-center">
-        				<a href = "<?php echo BASE_URL ; ?>/market/testmarket.php">
+        						<a href = "<?php echo BASE_URL ; ?>/market/testmarket.php">
 									<p><h2><i class="fa fa-shopping-cart"></i></h2></p>
 									<p><h4>Market</h4></p>
 								</a>
 							</div>
 						</div>
-						<br>
 						<div class="row">
 							<div class="col-md-5 text-center">
         				<a href = "settings.php">
