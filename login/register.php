@@ -49,8 +49,8 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
 <head>
 <title>Share Taxi | Register</title>
 <link rel='stylesheet' href='css/bootstrap.min.css'>
-	
-        <link rel="stylesheet" href="css/general_style.css" />
+
+<link rel="stylesheet" href="css/general_style.css" />
 
 <style>
 	.box{
