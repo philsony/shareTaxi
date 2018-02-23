@@ -1,0 +1,41 @@
+/** Book **/
+@font-face {
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://sharetaxi.philsony.com/fonts/circularstd/circularstd-book-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://sharetaxi.philsony.com/fonts/circularstd/circularstd-book-webfont.woff2) format('woff2');
+}
+
+/** Medium **/
+@font-face {
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 500;
+    src: url(https://sharetaxi.philsony.com/fonts/circularstd/circularstd-medium-webfont.woff) format('woff');
+  }
+@font-face {
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 500;
+    src: url(https://sharetaxi.philsony.com/fonts/circularstd/circularstd-medium-webfont.woff2) format('woff2');
+}
+
+/** Bold **/
+@font-face {
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://sharetaxi.philsony.com/fonts/circularstd/circularstd-bold-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://sharetaxi.philsony.com/fonts/circularstd/circularstd-bold-webfont.woff2) format('woff2');
+}
