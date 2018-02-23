@@ -12,12 +12,6 @@
     <script src='js/jquery-3.2.1.min.js'></script>
     <style>
 
-<<<<<<< HEAD
-    <?php 
-=======
-<<<<<<< HEAD
-    <?php
-=======
     <?php 
        $getLocation = "";
        $getLocationdata= "hidden";
@@ -103,12 +97,7 @@
 
         //SEARCHES THE DATABASE FOR THE DATA WITH THE LAT,LNG CODE EQUAL TO THE USER'S CURRENT LAT,LNG CODE. THIS IS THE DEFAULT OF A MARKET
     <div id = 'list'>
-      <?php
-
-        //SEARCHES THE DATABASE FOR THE DATA WITH THE LAT,LNG CODE EQUAL TO THE USER'S CURRENT LAT,LNG CODE. THIS IS THE DEFAULT OF A MARKET
-        $q = "SELECT t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t2.num_users, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest
-=======
-    <div id = 'list'>     <?php
+        <?php
          echo "<div class='row ".$getLocationdata."'>";
           echo "<center><p class='h1'>We need to get your location first</p></center>";
           echo "</div>";
