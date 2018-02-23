@@ -130,6 +130,7 @@
         }
       ?>
     </div>
+    <h2><a href = "<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
   </div>
   <div id="map"></div>
     <script>
