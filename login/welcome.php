@@ -29,7 +29,9 @@
 			$result_2 = mysqli_query($db,$sql);
 			$row_2 = mysqli_fetch_array($result_2,MYSQLI_ASSOC);
 			$_SESSION['pool_id'] = $row['pool_id'];
-			echo '<div>
+			echo '<div>	
+					<div>Route origin : '.$row_2['origin_address'].'</div>
+					<div>Route destination : '.$row_2['destination_address'].'</div>
 					<div>Route is : '.$row_2['status'].'</div>
 					<div><a href = "messaging.php">Message</a></div>
 				</div>';
