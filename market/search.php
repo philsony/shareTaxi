@@ -83,7 +83,7 @@
                 r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`
                 FROM route r, pool p, users u
                 WHERE p.user_id = u.user_id AND p.route_id = r.route_id AND r.status = 'WAITING' ) t1
-                INNER JOIN
+                LEFT JOIN
                 (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                 ON t1.route_id = t2.route_id
                 WHERE  t1.add_orig LIKE '%".$_POST['latlng']."%' 
