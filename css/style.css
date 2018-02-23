@@ -101,11 +101,15 @@ html {
 	margin-bottom: 5px;
 }
 
-.login-generic 
+@media screen and (max-height: 500px) {
+	.login {
+		padding-top: 5vh;
+	}
+}
 
 @media screen and (max-width: 600px) {
 	.login form {
-		margin-left: 0;
-		margin-right: 0;
+		margin-left: 1vw;
+		margin-right: 1vw;
 	}
 }
