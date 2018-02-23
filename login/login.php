@@ -39,6 +39,7 @@
 		<link rel="stylesheet" href="css/general_style.css" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    </head>
     <body class='login'>
         <div class="blue-overlay"></div>
