@@ -2,7 +2,7 @@
   require('../connect.php');
 ?>
   <head>
-    <title>Simple Map</title>
+    <title>Market</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -116,7 +116,7 @@
                       echo "<p class='num_user_pool'>Number of sharers: {$poolData['num_users']}</p>";
                       echo "<p class='cost'>Trip cost: {$poolData['route_cost']}</p>";
                       echo "<p class='status'>Pool Status: {$poolData['route_status']}</p>";
-                      echo "<p class='pool_id'>Pool ID: {$poolData['pool_id']}</p>";
+                      echo "<p class='pool_id'>Route ID: {$poolData['route_id']}</p>";
 
                       //INSERT MESSAGE MODULE
                       echo "<form method='POST' action ='#' class='options'>";
