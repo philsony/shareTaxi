@@ -1,4 +1,4 @@
-@import url('../../../css/style.css');
+@import url('../../../css/style.css?v=2');
 
 body, div {
     margin: 0;
@@ -16,7 +16,8 @@ a, a:hover {
 	padding-right: 5px;
 }
 #extend-search-bar {
-	width: 350px;
+    width: 350px;
+}
 body, div {
     margin: 0;
     padding: 0;
@@ -33,7 +34,8 @@ a, a:hover {
 	padding-right: 5px;
 }
 #extend-search-bar {
-	width: 350px;
+    width: 350px;
+}
 body, div {
     margin: 0;
     padding: 0;
