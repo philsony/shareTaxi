@@ -5,7 +5,7 @@
 		header(LOGIN_URL);
 	}
 
-	if(session_check(['id', 'login_user']) && (strpos($_SERVER["REQUEST_URI"],"login.php") !== false || strpos($_SERVER["REQUEST_URI"],"register.php") !== false)){
+	if(session_check(['id', 'login_user']) && (strpos($_SERVER["REQUEST_URI"],"login.php") !== false || strpos($_SERVER["REQUEST_URI"],"register.php") !== false || strpos($_SERVER["REQUEST_URI"],"connect.php") !== false)){
    header(WELCOME_URL);
 	}
 

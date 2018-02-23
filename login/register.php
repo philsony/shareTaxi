@@ -52,8 +52,6 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
 <<<<<<< HEAD
         <link rel="stylesheet" href="css/general_style.css" />
 
-=======
->>>>>>> da52d3f8d44faff150c7da6e726997a343f31182
 <style>
 	.box{
 		border: solid 1px black;
