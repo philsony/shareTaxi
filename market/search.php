@@ -86,8 +86,8 @@
                 LEFT JOIN
                 (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                 ON t1.route_id = t2.route_id
-                WHERE  t1.add_orig LIKE '%".$_POST['latlng']."%' 
-               ";
+                WHERE t2.num_users < 4 AND t1.add_orig LIKE '%".$_POST['latlng']."%' 
+                GROUP BY t2.route_id DESC";
           
    
           $result = mysqli_query($conn, $q);
