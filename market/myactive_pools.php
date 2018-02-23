@@ -122,7 +122,7 @@
                       echo "<form method='POST' action ='#' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
-                        echo "<button class='btn btn-primary' name='submitme'>Message Group</button>";
+                        echo "<a href='".BASE_URL."messaging/".$_SESSION['id']."/".$poolData['pool_id']."'><button type=\"button\" class='btn btn-primary' name=''>Message Group</button></a>";
                       echo "</form>";
 
                       //finds the minimum pool_id to determine what user created the ROUTE
