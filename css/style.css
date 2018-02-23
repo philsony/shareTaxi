@@ -101,6 +101,8 @@ html {
 	margin-bottom: 5px;
 }
 
+.login-generic 
+
 @media screen and (max-width: 600px) {
 	.login form {
 		margin-left: 0;

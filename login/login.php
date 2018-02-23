@@ -35,7 +35,7 @@
 <html>
    <head>
       <title>Login Page</title>
-		<link rel="stylesheet" href="css/general_style.css" />
+		<link rel="stylesheet" href="css/general_style.css?<?php echo rand(0, 100); ?>" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

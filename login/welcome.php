@@ -16,7 +16,7 @@
         
    </head>
 
-   <body>
+   <body class="login-generic">
      	<?php
        		include('../core/alerts.php');
       	?>
