@@ -94,7 +94,7 @@
                   ON t1.route_id = t2.route_id
                   WHERE t2.num_users < 4 AND t1.add_dest LIKE '%".$_POST['latlng']."%'
                   GROUP BY t2.route_id DESC) big1
-                  INNER JOIN
+                  LEFT JOIN
                   (SELECT route_id FROM `pool` WHERE user_id = {$_SESSION['id']}) big2
                    ON big1.route_id != big2.route_id
                     GROUP BY big1.route_id";
