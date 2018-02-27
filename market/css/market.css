@@ -1,12 +1,9 @@
-@import url('https://sharetaxi.philsony.com/fonts/museosansrounded/museosansrounded.css');
-
-* {
-    font-family: 'Museo Sans Rounded';
-}
+@import url('https://sharetaxi.philsony.com/fonts/circularstd/circularstd.css?v=3');
 
 html, body {
-    font-size: 18px !important;
-    font-weight: 400;
+    font-size: 17px !important;
+    font-weight: 500;
+    letter-spacing: .1px;
 }
 
 .activelink {
@@ -65,21 +62,44 @@ button:hover {
     background-color: #076869 !important;
 }
 
+button.active {
+    background-color: #076869 !important;
+}
+
 .inline {
     display: inline;
 }
 
 .joinpool {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     width: auto;
+    padding: 15px !important;
+    letter-spacing: .5px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+form {
+    display: block;
 }
 
 @media screen and (max-width: 600px) {
     .extendonmobile {
         padding: 40px;
     }
+    .extendminionmobile {
+        padding: 15px;
+    }
+    form {
+        width: 100%;
+        display: block;
+        margin-bottom: 0;
+    }
     .joinpool {
         width: 100%;
+    }
+    html, body {
+        font-size: 15px !important;
     }
 }

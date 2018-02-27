@@ -53,7 +53,7 @@
 					<div class="col-md-8 col-md-offset-2">
 						<div class="row">
 							<div class="col-md-5 icon text-center">
-								<a href = "profile.php">
+								<a href = "settings.php">
 									<p><h2><i class="fa fa-user"></i></h2></p>
 									<p><h4>Profile<h4></p>
 								</a>

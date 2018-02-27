@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/market.css">
     <script src='js/jquery-3.2.1.min.js'></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -49,35 +50,33 @@
   <body>
 
     <?php
+      include('../main.php');
       include('../core/alerts.php');
      ?>
-
+  <br>
   <div class='container-fluid'>
-    <div class='row showborder'>
-      <!-- go to active pools page -->
-      <div class='col-xs-offset-1 col-xs-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2'>
-        <a href='myactive_pools.php'><p class='h4'>Active Pools</p></a>
-      </div>
-      <!-- go to market page -->
-      <div class='col-xs-3 col-xs-offset-1 col-md-3 col-md-offset-2 col-lg-offset-2 col-lg-3 header'>
-        <a href='testmarket.php'><p class='h4'>Market</p></a>
-      </div>
-
-      <!-- search bar -->
-      <div class='col-xs-4 col-md-4 col-lg-4'>
-        <form id='searchform' method='POST' action='search.php'>
-          <input type='text' id='searchthis' name='latlng' placeholder='Where to go?'>
-          <input type'text' id='hiddentext' name='hideme'>
-          <button name='sub' type='submit' id='sub_me'>Search</button>
-        </form>
+    <div class='row'>
+      <div class="col-md-10 col-md-offset-1 col-xs-offset-1 col-xs-10">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-5 col-xs-12">
+              <a href='testmarket.php'><p class='h4 activelink'>Market</p></a> &nbsp;
+              <a href='myactive_pools.php'><p class='h4 activelink'>Active Pools</p></a>
+            </div>
+            <div class='extendonmobile'></div>
+            <div class="col-md-3 col-md-offset-3 col-xs-12">
+              <form id='searchform' method='POST' action='search.php'>
+                <input type='text' id='searchthis' name='latlng' placeholder='Where to go?'>
+                <input type'text' id='hiddentext' name='hideme'>
+                <button name='sub' type='submit' id='sub_me'>Search</button>
+                <div class='extendminionmobile'></div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- contents of the body or LIST OF POOLS availalbe -->
-    <div id = 'list'>
-
-      <?php 
-
+    <?php 
           // search for all existing routes in the table and FIND if the user owns any
           $q = "SELECT route_id as `r_id` FROM route WHERE status != 'FINISHED'";
           $result = mysqli_query($conn,$q);
@@ -109,8 +108,8 @@
                     $poolData = mysqli_fetch_assoc($resultQuery); //since also, only one result set
 
                     // these are the necessary data for pools
-                    echo "<div class='row showborder latlongdata' id='info'>";
-                    echo "<div class='col-xs-offset-2 col-xs-8'>";
+                    echo "<div class='row latlongdata' id='info'>";
+                    echo "<div class='col-xs-offset-2 col-md-6 col-md-offset-3 col-xs-8 box bg-light'>";
                       echo "<p class='originlatlong'>Trip Origin: {$poolData['add_orig']}</p>";
                       echo "<p class='destlatlong'>Trip Destination: {$poolData['add_dest']}</p>";
                       echo "<p class='num_user_pool'>Number of sharers: {$poolData['num_users']}</p>";
@@ -119,11 +118,9 @@
                       echo "<p class='pool_id'>Route ID: {$poolData['route_id']}</p>";
 
                       //INSERT MESSAGE MODULE
-                      echo "<form method='POST' action ='#' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
-                        echo "<a href='".BASE_URL."messaging/".$_SESSION['id']."/".$poolData['pool_id']."'><button type=\"button\" class='btn btn-primary' name=''>Message Group</button></a>";
-                      echo "</form>";
+                        echo "<a href='".BASE_URL."messaging/".$_SESSION['id']."/".$poolData['pool_id']."'><button type=\"button\" class='joinpool btn btn-primary' name=''>Message Group</button></a>";
 
                       //finds the minimum pool_id to determine what user created the ROUTE
                       $query = "SELECT MIN(pool_id) as `pool_id`, user_id, route_id FROM pool WHERE route_id = {$data['r_id']}";
@@ -134,22 +131,22 @@
                       if($ownerId == $_SESSION['id']){
 
                       //INSERT UPDATE MODULE
-                      echo "<form method='POST' action ='".BASE_URL."route/update_src.php' class='options'>";
+                      echo "<form class='mobfull' method='POST' action ='".BASE_URL."route/update_src.php' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
-                        echo "<button class='btn btn-success' name='submitme'>Edit</button>";
+                        echo "<button class='btn btn-success joinpool' name='submitme'>Edit</button>";
                       echo "</form>";
 
                       //INSERT DELETE MODULE
-                      echo "<form method='POST' action ='".BASE_URL."route/delete.php' class='options'>";
+                      echo "<form class='mobfull' method='POST' action ='".BASE_URL."route/delete.php' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
-                        echo "<button class='btn btn-danger' name='submitme'>Delete  Pool</button>";
+                        echo "<button class='btn btn-danger joinpool' name='submitme'>Delete  Pool</button>";
                       echo "</form>";
 
-                      echo "<form method='POST' action='".BASE_URL."route/updateRouteStatus.php' class='options'>";
+                      echo "<form class='mobfull' method='POST' action='".BASE_URL."route/updateRouteStatus.php' class='options'>";
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
-                        echo "<button class='btn btn-primary' type='submit'>Finish</button>";
+                        echo "<button class='btn btn-primary joinpool' type='submit'>Finish</button>";
                       echo "</form>";
 
 
@@ -172,8 +169,6 @@
             echo "</div>";
           }
       ?>
-    </div>
-    <h2><a href = "<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
   </div>
   <div id="map"></div>
     <script>
