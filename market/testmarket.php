@@ -112,7 +112,7 @@
               (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
               r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`
               FROM route r, pool p, users u
-              WHERE p.user_id = u.user_id AND p.route_id = r.route_id AND r.status = 'Waiting' and p.user_id != {$_SESSION['id']}) t1
+              WHERE p.user_id = u.user_id AND p.route_id = r.route_id AND r.status = 'Waiting' and u.user_id != {$_SESSION['id']}) t1
               INNER JOIN
                 (SELECT route_id, COUNT(*) as num_users
                 FROM pool GROUP BY route_id) t2
