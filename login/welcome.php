@@ -57,7 +57,7 @@
 					<div class='col-md-5 col-md-offset-1'>
 						<div class='box bg-light text-normal'>
 							<h3>Welcome, <?php echo $_SESSION['login_user']; ?>!</h3>
-							<?php
+							<br /><?php
 								if($count>0){
 									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
 										$routeId=$row['route_id'];
@@ -69,8 +69,8 @@
 										echo '<div class="box-mini">	
 												<p>'.$row2['origin_address'].' to  
 												'.$row2['destination_address'].'</p>
-												<div>Status: '.$row2['status'].'</div>
-												<div><a href="messaging.php">Message</a></div>
+												<span><button class="submit"><a href="/messaging/'. $userId . '/' . $row['pool_id'].'">Message</a></button></span>&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="statuser">'.$row2['status'].'</span>
 											</div>';
 										}
 									}

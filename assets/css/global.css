@@ -50,7 +50,7 @@ html, body {
 
 .box-mini {
   background-color: rgba(0, 0, 0, .1);
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
   margin: 10px 0px;
   font-family: 'Varela Round' !important;
@@ -58,6 +58,40 @@ html, body {
 
 .box-mini * {
   font-family: 'Varela Round' !important;
+  font-size: 16px;
+}
+
+.submit a {
+  font-size: 12px !important;
+}
+
+.statuser {
+  background-color: rgba(0, 0, 0, .2);
+  text-transform: uppercase;
+  padding: 15px;
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 12px !important;
+  font-weight: bold;
+  margin: 5px 0;
+  display: inline; 
+}
+
+.submit {
+  background-color: #0eb6b9;
+  text-transform: uppercase;
+  padding: 12px;
+  border-radius: 7px;
+  border: 0;
+  color: #fff;
+  font-size: 12px !important;
+  font-weight: bold;
+  margin: 5px 0;
+  display: inline; 
+}
+
+.submit:hover {
+  background-color: #098183;
 }
 
 .node {
