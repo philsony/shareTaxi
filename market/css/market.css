@@ -62,6 +62,10 @@ button:hover {
     background-color: #076869 !important;
 }
 
+button.active {
+    background-color: #076869 !important;
+}
+
 .inline {
     display: inline;
 }
@@ -73,11 +77,21 @@ button:hover {
     padding: 15px !important;
     letter-spacing: .5px;
     font-weight: bold;
+    margin-right: 5px;
+}
+
+form {
+    display: block;
 }
 
 @media screen and (max-width: 600px) {
     .extendonmobile {
         padding: 40px;
+    }
+    form {
+        width: 100%;
+        display: block;
+        margin-bottom: 0;
     }
     .joinpool {
         width: 100%;
