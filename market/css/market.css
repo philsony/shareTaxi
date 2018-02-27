@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700,800');
+@import url('https://sharetaxi.philsony.com/fonts/museosansrounded/museosansrounded.css');
 
 * {
-    font-family: 'Nunito';
-    font-weight: 400;    
+    font-family: 'Museo Sans Rounded';
 }
 
 html, body {
