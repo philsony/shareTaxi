@@ -1,10 +1,10 @@
 <?php
   require('../connect.php');
 
-	$srcAddr = $_POST['source'];
+	$srcAddr = addslashes($_POST['source']);
 	$srcLat	= floatval($_POST['srcLat']);
 	$srcLong = floatval($_POST['srcLong']);
-	$destAddr = $_POST['destination'];
+	$destAddr = addslashes($_POST['destination']);
 	$destLat = floatval($_POST['destLat']);
 	$destLong = floatval($_POST['destLong']);
 	$userID = $_POST['ID'];
