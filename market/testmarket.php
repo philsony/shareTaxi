@@ -135,7 +135,7 @@
               echo "<p class='num_user_pool'>Sharers: {$data['num_users']}</p>";
               echo "<p class='cost'>Cost: {$data['route_cost']}</p>";
               echo "<p class='status'>Status: {$data['route_status']}</p>";
-            echo "<p class='pool_id'>Distance between you and the owner: ".number_format($data['distance'])." KM</p>";
+            echo "<p class='pool_id'>Distance: ".number_format($data['distance'])." KM</p>";
 
               // allows the user to join a pool, rejects if 4 (doesnt happen anyway since it wont show up here due to SQL restriction of pools sharer > 4)
               echo "<form method='POST' action ='".BASE_URL."market/joinpool.php'>";

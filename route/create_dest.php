@@ -1,4 +1,5 @@
 <?php
+	require "../connect.php";
 	// Redirects unauthorized/unintentional access
 	if( !isset($_POST['srcLat']) || !isset($_POST['srcLong']) ){
 		header('location:create_src.php');
@@ -38,7 +39,7 @@
 			<button type="submit" class="btn btn-success">Submit</button>
 		</form>
 	<!-- End Form -->
-		<h2><a href = "<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
+		<h2><a href="<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
 	</div><!-- .col-xs-12 -->
 </div><!-- .row -->
 </div><!-- .container -->
