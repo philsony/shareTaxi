@@ -4,6 +4,7 @@
 body, div, div.container-fluid {
     margin: 0;
     padding: 0;
+    background-color: #fff;
 }
 a, a:hover {
     text-decoration: none;
@@ -27,9 +28,20 @@ button:hover {
     background-color: #0c7a7c !important;
 }
 .get-location button {
-    width: 100%;
-    height: 15vh;
-    font-size: 20px;
+    background-color: #010101 !important;
+    font-family: 'Circular Std';
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    height: 10vh;
+    font-size: 14px;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+
+.get-location button:hover {
+    background-color: #1a1a1a !important;
 }
 
 .next button {
@@ -38,6 +50,14 @@ button:hover {
     color: #fff;
     padding: 10px 14px;
     right: 2vw;
+    z-index: 999;
+    top: 45%;
+    transform: translate(0, -45%);
+    background-color: #010101 !important;
+}
+
+.next button:hover {
+    background-color: #161616 !important;
 }
 
 .pick-place {
@@ -49,6 +69,16 @@ button:hover {
 
 .pick-place input[type='text'] {
     width: 30vw;
+    border: 3px solid #f9f9f9;
+    padding: 20px !important;
+    transition: 1s all !important;
+    border-radius: 0;
+}
+
+.pick-place input[type='text']:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 3px solid #000;
 }
 
 @media screen and (max-width: 600px) {

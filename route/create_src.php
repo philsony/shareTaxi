@@ -33,7 +33,7 @@
 			<input type="hidden" name="currentLat" value="<?php echo $userLocation->latitude ; ?>" class="form-control" id="currentLat">
 			<div id="map"></div>
 			<div class='get-location'>
-				<button type="button" class="btn btn-info" id="curr_loc">Get current location</button>
+				<button type="button" class="btn btn-info" id="curr_loc"><i class='fa fa-map-marker-alt'></i> Get current location</button>
 			</div>
 			<div class='next'>
 				<button type="submit" class="btn btn-success"><i class='fa fa-angle-right'></i></button>
