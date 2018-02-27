@@ -16,6 +16,9 @@
         height: 100%;
         display:none;
       }
+      form {
+        display: inline;
+      }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
