@@ -34,9 +34,9 @@
 		// header('location:create_src.php');
 	} else {
 		// Insert to routes
-		$query = "
+		$query ="
 			INSERT INTO route (origin_address, origin_latitude, origin_longitude, destination_address, destination_latitude, destination_longitude, status, cost)
-			VALUES ('{$srcAddr}', {$srcLat}, {$srcLong}, '{$destAddr}', {$destLat}, {$destLong},'Waiting', 0)
+			VALUES ('{addslashes($srcAddr)}', {$srcLat}, {$srcLong}, '{addslashes($destAddr)}', {$destLat}, {$destLong},'Waiting', 0)
 		";
 		$result = mysqli_query($db, $query) or die("Error $query");
 
