@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
-
+@import url('scrollbar.css');
 
 html, body {
   font-size: 15px !important;
@@ -26,9 +26,88 @@ html, body {
 
 .customAlert {
   text-align: center;
-  background: green;
+  background: #0eb6b9;
+  padding: 25px;
   color: white;
-  font-size: 15px;
+  font-size: 16px;
+  font-family: 'Circular Std';
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.customAlert p {
+  margin: 0;
+}
+
+.text-normal {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.box-mini {
+  background-color: rgba(0, 0, 0, .1);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0px;
+  font-family: 'Varela Round' !important;
+}
+
+.box-mini * {
+  font-family: 'Varela Round' !important;
+  font-size: 16px;
+}
+
+.submit a {
+  font-size: 12px !important;
+}
+
+.statuser {
+  background-color: rgba(0, 0, 0, .2);
+  text-transform: uppercase;
+  padding: 15px;
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 12px !important;
+  font-weight: bold;
+  margin: 5px 0;
+  display: inline; 
+}
+
+.submit {
+  background-color: #0eb6b9;
+  text-transform: uppercase;
+  padding: 12px;
+  border-radius: 7px;
+  border: 0;
+  color: #fff;
+  font-size: 12px !important;
+  font-weight: bold;
+  margin: 5px 0;
+  display: inline; 
+}
+
+.submit:hover {
+  background-color: #098183;
+}
+
+.node {
+  background-color: #0eb6b9;
+  padding: 20px;
+  margin-bottom: 12px;
+  transition: 1s all;
+  font-size: 18px;
+}
+
+.node:hover {
+  background-color: #098183;
+}
+
+.node i {
+  margin-right: 20px;
 }
 
 @media screen and (max-width: 400px) {
