@@ -26,9 +26,19 @@ html, body {
 
 .customAlert {
   text-align: center;
-  background: green;
+  background: #0eb6b9;
+  padding: 25px;
   color: white;
-  font-size: 15px;
+  font-size: 16px;
+  font-family: 'Circular Std';
+  display: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+}
+
+.customAlert p {
+  margin: 0;
 }
 
 @media screen and (max-width: 400px) {

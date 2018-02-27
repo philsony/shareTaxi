@@ -15,6 +15,7 @@
 				<link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
         		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 				<link rel="stylesheet" href="css/general_style.css" />
+				<script src='https://code.jquery.com/jquery-latest.js'></script>
    </head>
    <body class="welcome">
 	 	<div class="container-fluid">
@@ -29,7 +30,7 @@
 		if($count>0){
 			while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
 				$routeId = $row['route_id'];
-				$sql = "SELECT * FROM route WHERE route_id = '$routeId'";
+				$sql = "SELECT * FROM route WHERE route_id = '$routeId' ORDER by `route_id` ASC LIMIT 3";
 				$result2 = mysqli_query($db,$sql);
 				$row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 				$_SESSION['pool_id'] = $row['pool_id'];
