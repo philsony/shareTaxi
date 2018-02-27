@@ -13,6 +13,12 @@ a, a:hover {
     margin-bottom: 8px;
 }
 
-.next {
+
+.next button {
     background-color: #0eb6b9;
+    position: fixed;
+    border-radius: 9999px;
+    color: #fff;
+    border: 0 !important;
+    padding: 6px 10px;
 }

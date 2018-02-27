@@ -34,7 +34,7 @@
 			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
 			<div id="map"></div>
 			<div class='next'>
-				<button type="submit" class="btn btn-success">Next</button>
+				<button type="submit" class="btn btn-success"><i class='fa fa-angle-right'></i></button>
 			</div>
 			<div class="form-group">
 				<label for="user">Origin</label>
