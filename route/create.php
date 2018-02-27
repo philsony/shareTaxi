@@ -15,11 +15,11 @@
 		die("Unauthorized access");
 	}
 
-	$srcAddr = $_POST['source'];
+	$srcAddr =addslashes( $_POST['source']);
 	$srcLat	= floatval($_POST['srcLat']);
 	$srcLong = floatval($_POST['srcLong']);
 
-	$destAddr = $_POST['destination'];
+	$destAddr =addslashes($_POST['destination']);
 	$destLat = floatval($_POST['destLat']);
 	$destLong = floatval($_POST['destLong']);
 
@@ -36,7 +36,7 @@
 		// Insert to routes
 		$query ="
 			INSERT INTO route (origin_address, origin_latitude, origin_longitude, destination_address, destination_latitude, destination_longitude, status, cost)
-			VALUES ('{addslashes($srcAddr)}', {$srcLat}, {$srcLong}, '{addslashes($destAddr)}', {$destLat}, {$destLong},'Waiting', 0)
+			VALUES ('{$srcAddr}', {$srcLat}, {$srcLong}, '{$destAddr}', {$destLat}, {$destLong},'Waiting', 0)
 		";
 		$result = mysqli_query($db, $query) or die("Error $query");
 
