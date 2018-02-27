@@ -61,18 +61,16 @@ if(!isset($userId)){
 <!DOCTYPE html>
 <html lang=en>
     <head>
-        <title>Share Taxi | Settings</title>
+        <title>Settings</title>
         <link rel='stylesheet' href='css/bootstrap.min.css'>
-        <link rel="stylesheet" href="css/general_style.css" />
-        
-
-        <style>
-            .box{
-                border: 1px solid black;
-            }
-        </style>
+        <link rel='stylesheet' href='css/general_style.css' />
+        <link rel='stylesheet' href='../assets/css/global.css' />
     </head>
-    <body>
+    <body class="settings">
+        <?php
+            include('../main.php');
+            include('../core/alerts.php');
+        ?>
         <div class='row'>
             <div class='col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 text-center'>
                 <form method='POST' onsubmit='return checkUser(this)' action='settings.php' class='box'>
@@ -88,7 +86,6 @@ if(!isset($userId)){
                     <p>Confirm New Password: <input id='cpass' type='password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number"  name='cpassword' placeholder='Confirm Password' require pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'></p>
                     <p><input type='submit' name='submit' class='btn btn-default'></p>
                 </form>
-                <p class='box'>Go back to <a href="welcome.php">Welcome Page</a></p>
             </div>
         </div>
     </body>

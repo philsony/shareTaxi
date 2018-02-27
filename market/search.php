@@ -3,10 +3,12 @@
   require('../connect.php');
 ?>
   <head>
-    <title>Market</title>
+    <title>Searching Market</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="css/market.css">
     <script src='js/jquery-3.2.1.min.js'></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -43,13 +45,15 @@
     </style>
   </head>
   <body>
+  <?php
+    include('../main.php');
+    include('../core/alerts.php');
+  ?>
   <div class='container-fluid'>
-    <div class='row showborder'>
-      <!-- go to active pools page -->
+    <div class='row'>
       <div class='col-xs-offset-1 col-xs-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2'>
         <a href='myactive_pools.php'><p class='h4'>Active Pools</p></a>
       </div>
-      <!-- go to market page -->
       <div class='col-xs-3 col-xs-offset-1 col-md-3 col-md-offset-2 col-lg-offset-2 col-lg-3 header'>
         <a href='testmarket.php'><p class='h4'>Market</p></a>
       </div>
