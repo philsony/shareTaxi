@@ -13,7 +13,7 @@
 <link rel='stylesheet' href='../assets/css/global.css' />
 <style>
 	#map {
-		height: 300px;
+		height: 85vh;
 	}
 </style>
 </head>
@@ -31,14 +31,15 @@
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
 			<input type="hidden" name="currentLong" value="<?php echo $userLocation->longitude ; ?>" class="form-control" id="currentLong">
 			<input type="hidden" name="currentLat" value="<?php echo $userLocation->latitude ; ?>" class="form-control" id="currentLat">
-			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
 			<div id="map"></div>
+			<div class='get-location'>
+				<button type="button" class="btn btn-info" id="curr_loc">Get current location</button>
+			</div>
 			<div class='next'>
 				<button type="submit" class="btn btn-success"><i class='fa fa-angle-right'></i></button>
 			</div>
-			<div class="form-group">
-				<label for="user">Origin</label>
-				<input type="text" name="source" class="form-control" id="source" placeholder="Search Box" required>
+			<div class="form-group pick-place">
+				<input type="text" name="source" class="form-control" id="source" placeholder="Search for Place" required>
 			</div>
 		</form>
 	</div>
@@ -46,7 +47,7 @@
 </div>
 <script>
 	// Note: This requires that you consent to location sharing when
-	// prompted by your browser. If you see the error "The Geolocation service
+	// prompted by ` browser. If you see the error "The Geolocation service
 	// failed.", it means you probably did not give permission for the browser to
 	// locate you.
 	var map, infoWindow, geocoder, autoComplete;
