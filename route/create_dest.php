@@ -5,7 +5,7 @@
 		header('location:create_src.php');
 	}
 
-	require("../connect.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,11 +46,9 @@
 				<input type="text" name="destination" class="form-control" id="destination" placeholder="Search for Place" required>
 			</div>
 		</form>
-<<<<<<< HEAD
 	<!-- End Form -->
 		<h2><a href="<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
-=======
->>>>>>> d24b3d7a5257632ef22892f69d2abc3f0bcadc2e
+
 	</div><!-- .col-xs-12 -->
 </div><!-- .row -->
 </div><!-- .container -->
