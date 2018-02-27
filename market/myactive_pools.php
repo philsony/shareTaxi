@@ -77,8 +77,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
     <?php 
           // search for all existing routes in the table and FIND if the user owns any
           $q = "SELECT route_id as `r_id` FROM route WHERE status != 'FINISHED'";
@@ -169,14 +167,13 @@
            if($numberOfRoutes == 0){
 
             //if there exist no route that you created, this option is prompted
-            echo "<div class='row'>";
-            echo "<center><p class='h1'>You do not currently own a pool.</center>";
+            echo "<br><br><br><div class='container-fluid'><div class='row'>";
+            echo "<center><h4>You do not currently own a pool.</h4></center>";
             echo "</div>";
-            echo "<div class='row'>";
-            echo "<center><a href='".BASE_URL."market/testmarket.php'><button class='btn btn-success'>Create Pool</button></a></center>";
-            echo "</div>";
+            echo "<center><a href='".BASE_URL."market/testmarket.php'><button class='submit'  style='width: auto;'>Create Pool</button></a></center>";
           }
       ?>
+      </div>
   </div>
   <div id="map"></div>
     <script>
