@@ -26,9 +26,9 @@ html, body {
 
 .customAlert {
   text-align: center;
-  background: #0eb6b9;
+  background: #fff;
   padding: 25px;
-  color: white;
+  color: #000;
   font-size: 16px;
   font-family: 'Circular Std';
   position: fixed;

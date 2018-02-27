@@ -86,7 +86,6 @@
           </div>
         </div>
         <br><br>
-      </div>
       <div id = 'list'>     <?php
          echo "<div class='row ".$getLocationdata."'>";
           echo "<center><p class='h1'>We need to get your location first</p></center>";
@@ -155,12 +154,10 @@
         }else{
 
           //prompts when there are no WAITING pools in the market
-          echo "<div class='row ".$getLocation."'>";
-          echo "<center><p class='h1'>No pools available, sorry.</center>";
+          echo "<div class='container-fluid'><div class='row ".$getLocation."'>";
+          echo "<center><h4>There are no pools available as of the moment.</h4></center>";
           echo "</div>";
-          echo "<div class='row ".$getLocation."'>";
-          echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></a></center>";
-          echo "</div>";
+          echo "<center><a href='".BASE_URL."route/create_src.php'><button class='submit' style='width: auto;'>Create a Pool Instead</button></a></center>";
 
        
         }
