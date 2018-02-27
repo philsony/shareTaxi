@@ -97,8 +97,10 @@
   
 
         //SEARCHES THE DATABASE FOR THE DATA WITH THE LAT,LNG CODE EQUAL TO THE USER'S CURRENT LAT,LNG CODE. THIS IS THE DEFAULT OF A MARKET
-        $q = "SELECT  (
-        (
+        $q = "SELECT big1.*, big2.* FROM
+        (SELECT
+         (
+          (
             ACOS(
                 SIN('".$_SESSION['user']['location_latitude']."' * PI() / 180) * SIN(
                     `t1`.`route_origlat` * PI() / 180) + COS('".$_SESSION['user']['location_latitude']."' * PI() / 180) * COS(`t1`.`route_origlat` * PI() / 180) * COS(
@@ -118,7 +120,11 @@
                 FROM pool GROUP BY route_id) t2
                 ON t1.route_id = t2.route_id
                 WHERE t2.num_users < 4
-                GROUP BY t2.route_id DESC ORDER BY distance";
+                GROUP BY t2.route_id DESC ORDER BY distance) big1
+    INNER JOIN
+      (SELECT route_id FROM `pool` WHERE user_id = {$_SESSION['id']})big2
+    ON big1.route_id != big2.route_id
+    GROUP BY big1.route_id";
 
         //$query_two = "SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id";
 
