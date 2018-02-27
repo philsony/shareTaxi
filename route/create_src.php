@@ -7,9 +7,10 @@
 <head>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta charset="utf-8">
-<title>Create Route | ShareTaxi</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/general_style.css">
+<title>Create a Route</title>
+<link rel='stylesheet' href='css/bootstrap.min.css'>
+<link rel='stylesheet' href='css/general_style.css' />
+<link rel='stylesheet' href='../assets/css/global.css' />
 <style>
 	#map {
 		height: 300px;
@@ -17,31 +18,32 @@
 </style>
 </head>
 <body>
-<div class="container">
-<!-- Content -->
+<?php
+		include('../main.php');
+		include('../core/alerts.php');
+?>
+        
+<div class="container-fluid">
 <div class="row">
 	<div class="col-xs-12">
-	<!-- Actual Form -->
 		<form method="POST" action="create_dest.php">
+			<input type="hidden" name="srcLat" class="form-control" id="srcLat">
+			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
+			<input type="hidden" name="currentLong" value="<?php echo $userLocation->longitude ; ?>" class="form-control" id="currentLong">
+			<input type="hidden" name="currentLat" value="<?php echo $userLocation->latitude ; ?>" class="form-control" id="currentLat">
+			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
+			<div id="map"></div>
+			<div class='next'>
+				<button type="submit" class="btn btn-success">Next</button>
+			</div>
 			<div class="form-group">
 				<label for="user">Origin</label>
 				<input type="text" name="source" class="form-control" id="source" placeholder="Search Box" required>
 			</div>
-			<input type="hidden" name="srcLat" class="form-control" id="srcLat">
-			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
-
-			<input type="hidden" name="currentLong" value="<?php echo $userLocation->longitude ; ?>" class="form-control" id="currentLong">
-			<input type="hidden" name="currentLat" value="<?php echo $userLocation->latitude ; ?>" class="form-control" id="currentLat">
-
-			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
-			<div id="map"></div>
-			<button type="submit" class="btn btn-success">Next</button>
 		</form>
-	<!-- End Form -->
-		<h2><a href = "<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
-	</div><!-- .col-xs-12 -->
-</div><!-- .row -->
-</div><!-- .container -->
+	</div>
+</div>
+</div>
 <script>
 	// Note: This requires that you consent to location sharing when
 	// prompted by your browser. If you see the error "The Geolocation service

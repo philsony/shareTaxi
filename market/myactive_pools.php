@@ -151,6 +151,11 @@
 
 
                     }
+                      echo "<form class='mobfull' method='POST' action='".BASE_URL."market/leavepool.php' class='options'>";
+                        echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
+                        echo "<button class='btn btn-danger joinpool' type='submit'>Leave Pool</button>";
+                      echo "</form>";
+
                     echo "</div>";
                     echo "</div>";
                   }
