@@ -1,42 +1,42 @@
 <?php
   require('../connect.php');
 
-    $success = "location: login.php";
-    $failure = "location: register.php";
+    $success="location: login.php";
+    $failure="location: register.php";
 ?>
 
 <?php
 //Checks if the regristration occurred
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
 
-	$pass = $_POST['password'];
+	$pass=$_POST['password'];
 
 	//Hash the password using sha256
-	$user_pass = hash( "sha256", $_POST['password']);
+	$user_pass=hash( "sha256", $_POST['password']);
 
     //Retrieves the current date
-    $date = date('Y-m-d h:i:s');
+    $date=date('Y-m-d h:i:s');
 
     //Query to check if the email submitted is already in use
     $emaildraw =
-        "SELECT users.email FROM users WHERE users.email = '{$_POST['email']}'";
-    if($drawn = mysqli_query($db, $emaildraw) or die("something went wrong! with email confirmation")){
-        $checker = mysqli_num_rows($drawn);
+        "SELECT users.email FROM users WHERE users.email='{$_POST['email']}'";
+    if($drawn=mysqli_query($db, $emaildraw) or die("something went wrong! with email confirmation")){
+        $checker=mysqli_num_rows($drawn);
         mysqli_free_result($drawn);
         if($checker){
             echo "<script>alert('Email is already in use!');</script> <a href=\"login/register.php\">Go Back</a>";
         }
     }
     //Adds the new account if there is no same email
-		$userLocation =  getUserLocation();
+		$userLocation= getUserLocation();
     if(!$checker){
         $query =
             "INSERT INTO users values(null, '{$_POST['username']}', '{$user_pass}', '{$_POST['email']}', $userLocation->latitude, $userLocation->longitude, NOW())";
-        $result = mysqli_query($db, $query) or die(mysqli_error($db));
-        $id = mysqli_insert_id($db);
+        $result=mysqli_query($db, $query) or die(mysqli_error($db));
+        $id=mysqli_insert_id($db);
         if($result){
-					$_SESSION['id'] = $id;
-					$_SESSION['login_user'] = $_POST['username'];
+					$_SESSION['id']=$id;
+					$_SESSION['login_user']=$_POST['username'];
 
 					header("location: welcome.php");
         }
@@ -47,45 +47,52 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-<title>Share Taxi | Register</title>
-<link rel='stylesheet' href='css/bootstrap.min.css'>
-
-<link rel="stylesheet" href="css/general_style.css" />
-
-<style>
-	.box{
-		border: solid 1px black;
-	}
-</style>
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/general_style.css?<?php echo rand(0, 100); ?>" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-<body>
-<div class='container-fluid'>
-	<div class='row'>
-		<div class = 'col-md-4 col-sm-8 col-xs-12 col-md-offset-4 col-sm-offset-2 text-center'>
-
-			<form method = 'POST' onsubmit = 'return checkForm(this)' action = 'register.php' class = 'box'>
-                <p id = "demo"></p>
-				<p>Username: <input id = "user" type = 'text' name = 'username' placeholder = 'Username' title="Format:should be at least 3 min, restricted to letters, numbers, and underscore" required pattern="\w+"></p>
-				<p>Email: <input id = "pass" type = 'email' name = 'email' placeholder = 'Email' required></p>
-				<p>Password: <input id = "cpass" type = 'password' name = 'password' placeholder = 'Password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></p>
-				<p>Confirm Password: <input type = 'password' name = 'cpassword' placeholder = 'Password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></p>
-                <p><input type = 'submit' name = 'submit' class = 'btn btn-default'></p>
-                <h6>Already have an account? <a href = 'login.php'>Login</a> here.</h6>
-			</form>
-
+<body class='login'>
+        <div class="blue-overlay"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-xs-10 col-xs-offset-1 col-md-offset-4">
+                    <div class="title">ShareTaxi</div>
+                        <form method='POST' onsubmit='return checkForm(this)' action='register.php' class='box'>
+                            <br />
+                            <div class='form-group'>
+                                <p><label>Username:</label> <input id="user" class="form-control" type='text' name='username' title="Format:should be at least 3 min, restricted to letters, numbers, and underscore" required pattern="\w+"></p>
+                            </div>
+                            <div class='form-group'>
+                                <p><label>Email:</label> <input id="pass" class="form-control" type='email' name='email' required></p>
+                            </div>
+                            <div class='form-group'>
+                                <p><label>Password:</label> <input id="cpass" class="form-control" type='password' name='password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></p>
+                            </div>
+                            <div class='form-group'>
+                                <p><label>Confirm Password:</label> <input  class="form-control" type='password' name='cpassword' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></p>
+                            </div>
+                            <div class="form-group">    
+                                <p><input type='submit' value='Register' name='submit' class='submit'></p>
+                            </div>
+                            <h6>Already have an account? <a href='login.php'>Login</a> here.</h6>
+                        </form>
+                    </div>
+            </div>
 		</div>
 	</div>
 </div>
 </body>
 
-<script type = "text/javascript">
+<script type="text/javascript">
         //More Checks ought to be added here
 
     //Checks the password to have at least 1 lowercase,
     //1 uppercase, 1 number, and at least 8 characters long
     function checkPassword(str){
         // \d is equivalent to [0-9]
-        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        var re=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
         return re.test(str);
     }
 
@@ -100,7 +107,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
         }
 
         //Restricts username to numbers, letters, and underscores
-        re = /^\w+$/;
+        re=/^\w+$/;
         if(!re.test(form.username.value)){
             alert("Username must contain only letters, numbers and underscores!");
             form.username.focus();

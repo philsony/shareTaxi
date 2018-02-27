@@ -4,9 +4,15 @@ body, div {
     margin: 0;
     padding: 0;
 }
+.submit {
+    transition: 2s all !important;
+}
 a, a:hover {
     text-decoration: none;
     color: #000;
+}
+::placeholder {
+    color: rgba(255, 255, 255, .3) !important;
 }
 .row {
 	margin-bottom: 8px;
