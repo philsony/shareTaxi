@@ -1,5 +1,5 @@
 .navigation .trigger {
-    position: absolute;
+    position: fixed;
     font-size: 25px;
     left: 20px;
     top: 20px;
@@ -14,3 +14,4 @@
 .navigation .trigger a i:hover {
     color: #0eb6b9;
 }
+

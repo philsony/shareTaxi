@@ -1,10 +1,6 @@
 <?php
 	require "../connect.php";
-
-
-?> <!DOCTYPE html>
-
-
+?> 
 <!DOCTYPE html>
 
 <html lang="en">
@@ -51,8 +47,7 @@
 	// prompted by your browser. If you see the error "The Geolocation service
 	// failed.", it means you probably did not give permission for the browser to
 	// locate you.
-	var map, infoWindow, geocoder, searchBox;
-
+	var map, infoWindow, geocoder, autoComplete;
 	// Initialize the map
 	function initMap() {
 		map = new google.maps.Map(document.getElementById('map'), {
@@ -67,53 +62,42 @@
 		
 		infoWindow = new google.maps.InfoWindow;
 		geocoder = new google.maps.Geocoder;
-		searchBox = new google.maps.places.Autocomplete(input, options);
+		autoComplete = new google.maps.places.Autocomplete(input, options);
 		map.controls.push(input);
-
-		var markers = [];
+		// Brute Force: Prevents user from inputting bogus text with enter, still possible by clicking submit button
+		google.maps.event.addDomListener(input, 'keydown', function(e) { 
+			if (e.keyCode == 13){
+				e.preventDefault();
+			}
+		});
+		var marker = new google.maps.Marker({
+			map: map,
+			anchorPoint: new google.maps.Point(0, -29)
+        });
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
-        searchBox.addListener('places_changed', function(){
-			var places = searchBox.getPlaces();
-
-			if (places.length == 0) {
-				return;
+        autoComplete.addListener('place_changed', function(){
+			marker.setVisible(false);
+			
+			var place = autoComplete.getPlace();
+			if (!place.geometry) {
+				// User entered the name of a Place that was not suggested and
+				// pressed the Enter key, or the Place Details request failed.
+				window.alert("Error: '" + place.name + "' is invalid. Please choose one of the choices.");
+				return false;
 			}
-
-			// Clear out the old markers.
-			markers = [];
-
-			// For each place, get the icon, name and location.
-			var bounds = new google.maps.LatLngBounds()
-			places.forEach(function(place) {
-				if (!place.geometry) {
-					console.log("Returned place contains no geometry");
-					return;
-				}
-				// Create a marker for each place.
-				var pos = {
-					lat: place.geometry.location.lat(),
-					lng: place.geometry.location.lng()
-				};
-				// For db
-				document.getElementById('srcLat').setAttribute('value', pos.lat);
-				document.getElementById('srcLong').setAttribute('value', pos.lng);
-
-				markers.push(new google.maps.Marker({
-					map: map,
-					title: place.name,
-					position: pos
-				}));
-
-
-				if (place.geometry.viewport) {
-					// Only geocodes have viewport.
-					bounds.union(place.geometry.viewport);
-				} else {
-					bounds.extend(place.geometry.location);
-				}
-			});
-			map.fitBounds(bounds);
+			if (place.geometry.viewport) {
+				map.fitBounds(place.geometry.viewport);
+			} else {
+				map.setCenter(place.geometry.location);
+				map.setZoom(17);  // Why 17? Because it looks good.
+			}
+			marker.setPosition(place.geometry.location);
+			marker.setVisible(true);
+			
+			// For db
+			document.getElementById('srcLat').setAttribute('value', place.geometry.location.lat());
+			document.getElementById('srcLong').setAttribute('value', place.geometry.location.lng());
 		});
 	}
 	// If user clicks "Your current location"
@@ -122,7 +106,6 @@
 	document.getElementById("curr_loc").addEventListener('click', function(){
 		if (navigator.geolocation) {
 		  navigator.geolocation.getCurrentPosition(function(position) {
-
 			var pos = {
 			  lat: position.coords.latitude,
 			  lng: position.coords.longitude
@@ -145,7 +128,6 @@
 					window.alert('Geocoder failed due to: ' + status);
 				}
 			});
-
 			infoWindow.setPosition(pos);
 			infoWindow.open(map, marker);
 			map.setCenter(pos);
@@ -161,16 +143,12 @@
 		  handleLocationError(false, infoWindow, map.getCenter());
 		}
 	});
-
 	function getLocationFromIp(){
-
       var location = "<?php echo $userLocation->city ; ?>,<?php echo $userLocation->region_name ; ?>,<?php echo $userLocation->country_name ; ?> ";
 			map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: <?php echo $userLocation->latitude ; ?>, lng: <?php echo $userLocation->longitude ; ?>}, // Default USC Talamban Campus
 			zoom: 18
 		});
-
-
 			var pos = {
 			  lat: document.getElementById('currentLong').value,
 			  lng: document.getElementById('currentLat').value
@@ -183,13 +161,8 @@
 				position: pos,
 				map: map,
 			});
-
-
 	}
-
-
 	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-
 	getLocationFromIp() ;
 	/* infoWindow.setPosition(pos);
 		infoWindow.setContent(browserHasGeolocation ?
@@ -199,7 +172,7 @@
 	*/ }
 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBOsw4rpr5IU_mQEmRbiz1EMA3YCtpPaw&callback=initMap&libraries=places&sensor=false&v2"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBOsw4rpr5IU_mQEmRbiz1EMA3YCtpPaw&callback=initMap&libraries=places&v2"></script>
 
 </body>
 </html>
