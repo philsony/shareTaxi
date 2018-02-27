@@ -23,9 +23,6 @@
         margin: 0;
         padding: 0;
       }
-    .showborder{
-      border:3px solid black;
-    }
     .latlongdata{
       display:block;
     }
@@ -49,26 +46,29 @@
     include('../main.php');
     include('../core/alerts.php');
   ?>
+  <br>
   <div class='container-fluid'>
     <div class='row'>
-      <div class='col-xs-offset-1 col-xs-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2'>
-        <a href='myactive_pools.php'><p class='h4'>Active Pools</p></a>
+      <div class="col-md-10 col-md-offset-1 col-xs-offset-1 col-xs-10">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-5 col-xs-12">
+              <a href='testmarket.php'><p class='h4 activelink'>Market</p></a> &nbsp;
+              <a href='myactive_pools.php'><p class='h4 activelink'>Active Pools</p></a>
+            </div>
+            <div class='extendonmobile'></div>
+            <div class="col-md-3 col-md-offset-3 col-xs-12">
+              <form style='display: inline; text-align: right;' id='searchform' method='POST' action='search.php'>
+                <input type='text' id='searchthis' value="" name='latlng' placeholder='Where to go?'>
+                <input type'text' id='hiddentext' name='hideme'>
+                <button name='sub' type='submit' id='sub_me'>Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br><br>
       </div>
-      <div class='col-xs-3 col-xs-offset-1 col-md-3 col-md-offset-2 col-lg-offset-2 col-lg-3 header'>
-        <a href='testmarket.php'><p class='h4'>Market</p></a>
-      </div>
-
-      <!-- search bar -->
-      <div class='col-xs-4 col-md-4 col-lg-4'>
-        <form id='searchform' method='POST' action='search.php'>
-          <input type='text' id='searchthis' name='latlng' placeholder='Where to go?'>
-          <input type'text' id='hiddentext' name='hideme'>
-          <button name='sub' type='submit' id='sub_me'>Search</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- contents of the body or LIST OF POOLS availalbe -->
+      <!-- contents of the body or LIST OF POOLS availalbe -->
     <div id = 'list'>
       <?php
         $data_received = $_POST['hideme'];
@@ -102,8 +102,8 @@
 
               // display all the necessary pool data
 
-              echo "<div class='row showborder latlongdata' id='info'>";
-              echo "<div class='col-xs-offset-2 col-xs-8'>";
+              echo "<div class='row latlongdata' id='info'>";
+              echo "<div class='col-xs-offset-2 col-md-6 col-md-offset-3 col-xs-8 box bg-light'>";
                 echo "<p class='originlatlong'>Trip Origin: {$data['add_orig']}</p>";
                 echo "<p class='destlatlong'>Trip Destination: {$data['add_dest']}</p>";
                 echo "<p class='num_user_pool'>Number of sharers: {$data['num_users']}</p>";
@@ -113,7 +113,7 @@
                 echo "<form method='POST' action ='joinpool.php'>";
                   echo "<input type='text' value={$data['route_id']} name='route_id' class='hiddeninput'>";
                   echo "<input type='text' value={$data['pool_id']} name='pool_id' class='hiddeninput'>";
-                  echo "<button class='btn btn-success' name='submitme'>Join Pool</button>";
+                  echo "<button class='btn btn-success joinpool' name='submitme'>Join Pool</button>";
                 echo "</form>";
               echo "</div>";
               echo "</div>";
@@ -132,7 +132,6 @@
         }
       ?>
     </div>
-    <h2><a href = "<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
   </div>
   <div id="map"></div>
     <script>

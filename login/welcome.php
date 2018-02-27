@@ -52,12 +52,6 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<div class="row">
-							<div class="col-md-5 icon text-center">
-								<a href = "settings.php">
-									<p><h2><i class="fa fa-user"></i></h2></p>
-									<p><h4>Profile<h4></p>
-								</a>
-							</div>	
 							<div class="col-md-5 icon col-md-offset-1 text-center">
 								<a href = "<?php echo BASE_URL ; ?>/market/myactive_pools.php">
 									<p><h2><i class="fa fa-car"></i></h2></p>

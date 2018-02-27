@@ -52,7 +52,7 @@ if(!isset($userId)){
                 echo '<script>alert("password has successfully been changed!");</script>';
             }
         }else{
-            echo '<script>alert("The Old Password did not match! Try again.");</script>';
+            echo '<script>alert("Your password is not correct! Try again.");</script>';
         }
     }
 
@@ -71,21 +71,40 @@ if(!isset($userId)){
             include('../main.php');
             include('../core/alerts.php');
         ?>
+        <br><br>
         <div class='row'>
-            <div class='col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 text-center'>
-                <form method='POST' onsubmit='return checkUser(this)' action='settings.php' class='box'>
-                    <p>Old Username: <?php echo $user; ?></p>
-                    <p>New Username: <input id='user' type='text' name='nusername' placeholder='New Username' required pattern="\w+"></p>
-                    <p><input type='submit' name='submit' class='btn btn-default'></p>
-                </form>
-                <br>
-                <p class='box'>Email: <?php echo $email; ?></p>
-                <form method='POST' onsubmit='return checkPass(this)' action='settings.php' class='box'>
-                    <p>Old Password: <input id='pass' type='password' name='password' placeholder='Old Password' required ></p>
-                    <p>New Password: <input id='npass' type='password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number" name='npassword' placeholder='New Password' require pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'></p>
-                    <p>Confirm New Password: <input id='cpass' type='password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number"  name='cpassword' placeholder='Confirm Password' require pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'></p>
-                    <p><input type='submit' name='submit' class='btn btn-default'></p>
-                </form>
+            <div class='col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1'>
+                <div class='container-fluid'>
+                    <p class='title'>Account Settings</p>
+                    <br class='mobhidden'>
+                    <div class='row'>
+                        <div class='col-xs-12 col-md-4 col-md-offset-1'>
+                            <div class='bg-light box'>
+                                <p class='title'>Change Password</p>
+                                <form method='POST' onsubmit='return checkUser(this)' action='settings.php'>
+                                    <p><span class='banner'><?php echo $user; ?></span></p>
+                                    <br />
+                                    <p><input id='user' type='text' name='nusername' placeholder='Enter new username..' required pattern="\w+"></p>
+                                    <p><input type='submit' value='Save Username' name='submit' class='btn btn-default'></p>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-md-4 col-md-offset-1'>
+                            <div class='bg-light box'>
+                                <p class='title'>Change Username</p>
+                                <p><span class='banner'><?php echo $email; ?></span></p>
+                                <br>
+                                <form method='POST' onsubmit='return checkPass(this)' action='settings.php'>
+                                    <p><input id='pass' type='password' name='password' placeholder='Old Password' required ></p>
+                                    <p><input id='npass' type='password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number" name='npassword' placeholder='New Password' require pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'></p>
+                                    <p><input id='cpass' type='password' title="Format: at least 8 characters long, at least 1 lowercase character ,at least 1 uppercase character, at least 1 number"  name='cpassword' placeholder='Confirm Password' require pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'></p>
+                                    <p><input type='submit' value='Save Password' name='submit' class='btn btn-default'></p>
+                                </form>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
