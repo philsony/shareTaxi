@@ -1,9 +1,9 @@
 @import url('https://sharetaxi.philsony.com/fonts/circularstd/circularstd.css?v=3');
 
 html, body {
-    font-size: 16px !important;
+    font-size: 17px !important;
     font-weight: 500;
-    font-family: 'Circular Std !important';
+    letter-spacing: .1px;
 }
 
 .activelink {
@@ -81,5 +81,8 @@ button:hover {
     }
     .joinpool {
         width: 100%;
+    }
+    html, body {
+        font-size: 15px !important;
     }
 }
