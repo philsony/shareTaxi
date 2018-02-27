@@ -1,12 +1,9 @@
-@import url('https://sharetaxi.philsony.com/fonts/museosansrounded/museosansrounded.css');
-
-* {
-    font-family: 'Museo Sans Rounded';
-}
+@import url('https://sharetaxi.philsony.com/fonts/circularstd/circularstd.css?v=3');
 
 html, body {
-    font-size: 18px !important;
-    font-weight: 400;
+    font-size: 16px !important;
+    font-weight: 500;
+    font-family: 'Circular Std !important';
 }
 
 .activelink {
@@ -71,8 +68,11 @@ button:hover {
 
 .joinpool {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     width: auto;
+    padding: 15px !important;
+    letter-spacing: .5px;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
