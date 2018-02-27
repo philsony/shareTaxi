@@ -50,6 +50,7 @@
   <body>
 
     <?php
+      include('../main.php');
       include('../core/alerts.php');
      ?>
   <br>
@@ -68,6 +69,7 @@
                 <input type='text' id='searchthis' name='latlng' placeholder='Where to go?'>
                 <input type'text' id='hiddentext' name='hideme'>
                 <button name='sub' type='submit' id='sub_me'>Search</button>
+                <div class='extendminionmobile'></div>
               </form>
             </div>
           </div>

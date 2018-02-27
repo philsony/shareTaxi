@@ -88,6 +88,9 @@ form {
     .extendonmobile {
         padding: 40px;
     }
+    .extendminionmobile {
+        padding: 15px;
+    }
     form {
         width: 100%;
         display: block;
