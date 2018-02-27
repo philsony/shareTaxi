@@ -3,42 +3,48 @@
 	if( !isset($_POST['srcLat']) || !isset($_POST['srcLong']) ){
 		header('location:create_src.php');
 	}
+
+	require("../connect.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta charset="utf-8">
-<title>Create Route | ShareTaxi</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/general_style.css">
+<title>Create a Route</title>
+<link rel='stylesheet' href='css/bootstrap.min.css'>
+<link rel='stylesheet' href='../assets/css/global.css' />
+<link rel='stylesheet' href='css/general_style.css' />
 <style>
 	#map {
-		height: 300px;
+		height: 85vh;
 	}
 </style>
 </head>
 <body>
+<?php
+		include('../main.php');
+		include('../core/alerts.php');
+?>
 <div class="container">
 <!-- Content -->
 <div class="row">
 	<div class="col-xs-12">
 	<!-- Actual Form -->
 		<form method="POST" action="create.php"> 
-			<div class="form-group">
-				<label for="user">Destination</label>
-				<input type="text" name="destination" class="form-control" id="destination" placeholder="Search Box" required>
-			</div>
 			<input type="hidden" name="destLat" class="form-control" id="destLat">
 			<input type="hidden" name="destLong" class="form-control" id="destLong">
 			<input type="hidden" name="source" class="form-control" id="source">
 			<input type="hidden" name="srcLat" class="form-control" id="srcLat">
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
 			<div id="map"></div>
-			<button type="submit" class="btn btn-success">Submit</button>
+			<div class='get-location'>
+				<button type="submit" class="btn btn-info"><i class='fa fa-map-marker-alt'></i> Proceed</button>
+			</div>
+			<div class="form-group pick-place">
+				<input type="text" name="destination" class="form-control" id="destination" placeholder="Search for Place" required>
+			</div>
 		</form>
-	<!-- End Form -->
-		<h2><a href = "<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
 	</div><!-- .col-xs-12 -->
 </div><!-- .row -->
 </div><!-- .container -->

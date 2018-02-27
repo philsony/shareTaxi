@@ -1,10 +1,10 @@
 @import url('../../../css/style.css');
 
 
-body, div, div.container-fluid {
+html, body, div, div.container-fluid {
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: #fff !important;
 }
 a, a:hover {
     text-decoration: none;
