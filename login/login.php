@@ -40,7 +40,7 @@
         <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    </head>
-    <body class='login' style='padding-top: 6vh;'>
+    <body class='login'>
         <div class="blue-overlay"></div>
         <div class="container-fluid">
             <div class="row">
