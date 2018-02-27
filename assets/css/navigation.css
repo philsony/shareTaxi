@@ -8,7 +8,7 @@
 }
 
 .navigation .trigger * {
-    transition: 1s all;
+    transition: 1s all !important;
 }
 
 .navigation .trigger a i:hover {
