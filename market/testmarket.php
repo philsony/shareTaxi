@@ -141,7 +141,7 @@
               echo "<form method='POST' action ='".BASE_URL."market/joinpool.php'>";
                 echo "<input type='text' value={$data['route_id']} name='route_id' class='hiddeninput'>";
                 echo "<input type='text' value={$data['pool_id']} name='pool_id' class='hiddeninput'>";
-                echo "<button style='width: auto !important; font-size: 16px;' class='btn btn-success' name='submitme'>Join Pool</button>";
+                echo "<button class='btn btn-success joinpool' name='submitme'>Join Pool</button>";
               echo "</form>";
             echo "</div>";
             echo "</div>";
