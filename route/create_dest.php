@@ -47,7 +47,7 @@
 			</div>
 		</form>
 	<!-- End Form -->
-		<h2><a href="<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
+
 
 	</div><!-- .col-xs-12 -->
 </div><!-- .row -->
