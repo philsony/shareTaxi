@@ -121,7 +121,7 @@
                       //INSERT MESSAGE MODULE
                         echo "<input type='text' value={$poolData['route_id']} name='route_id' class='hiddeninput'>";
                         echo "<input type='text' value={$poolData['pool_id']} name='pool_id' class='hiddeninput'>";
-                        echo "<a href='".BASE_URL."messaging/".$_SESSION['id']."/".$poolData['pool_id']."'><button type=\"button\" class='joinpool btn btn-primary' name=''>Message Group</button></a>";
+                        echo "<a href='".BASE_URL."messaging/".$_SESSION['id']."/".$poolData['route_id']."'><button type=\"button\" class='joinpool btn btn-primary' name=''>Message Group</button></a>";
 
                       //finds the minimum pool_id to determine what user created the ROUTE
                       $query = "SELECT MIN(pool_id) as `pool_id`, user_id, route_id FROM pool WHERE route_id = {$data['r_id']}";

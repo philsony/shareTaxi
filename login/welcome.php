@@ -69,7 +69,7 @@
 										echo '<div class="box-mini">	
 												<p>'.$row2['origin_address'].' to  
 												'.$row2['destination_address'].'</p>
-												<span><a href="/messaging/'. $userId . '/' . $row['pool_id'].'"><button class="submit">Message</button></a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+												<span><a href="/messaging/'. $userId . '/' . $row['route_id'].'"><button class="submit">Message</button></a></span>&nbsp;&nbsp;&nbsp;&nbsp;
 												<span class="statuser">'.$row2['status'].'</span>
 											</div>';
 										}
