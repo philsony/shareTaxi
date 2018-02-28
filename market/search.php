@@ -144,12 +144,10 @@
 
             // display these option when there are no available pools.
 
-            echo "<div class='row'>";
-            echo "<center><p class='h1'>No pools available, sorry.</center>";
+            echo "<br><br><br><div class='container-fluid'><div class='row'>";
+            echo "<center><h4>There are no pools available.</h4></center>";
             echo "</div>";
-            echo "<div class='row'>";
-            echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></a></center>";
-            echo "</div>";
+            echo "<center><a href='".BASE_URL."route/create_src.php'><button class='submit' style='width: auto;'>Create Pool</button></a></center>";
           }
         }
       ?>
