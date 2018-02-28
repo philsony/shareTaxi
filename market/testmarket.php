@@ -95,35 +95,65 @@
           echo "</div></br>";
   
 
+        $query = "SELECT route_id FROM `pool` WHERE user_id != {$_SESSION['id']}";
+        $tryresult = mysqli_query($conn,$query);
+        $tryrow = mysqli_num_rows($tryresult);
+        if($tryrow == 0){
+          $q = "SELECT big1.*, big2.* FROM
+                  (SELECT
+                   (
+                    (
+                      ACOS(
+                          SIN('".$_SESSION['user']['location_latitude']."' * PI() / 180) * SIN(
+                              `t1`.`route_origlat` * PI() / 180) + COS('".$_SESSION['user']['location_latitude']."' * PI() / 180) * COS(`t1`.`route_origlat` * PI() / 180) * COS(
+                                  (
+                                      '".$_SESSION['user']['location_longitude']."' - `t1`.`route_origlong`
+                                  ) * PI() / 180)
+                              ) * 180 / PI()) * 60 * 1.1515) AS distance
+                              
+                              , t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t2.num_users, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest
+                        FROM
+                        (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
+                        r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`
+                        FROM route r, pool p, users u
+                        WHERE p.user_id = u.user_id AND p.route_id = r.route_id AND r.status = 'Waiting' and u.user_id != {$_SESSION['id']}) t1
+                        INNER JOIN
+                          (SELECT route_id, COUNT(*) as num_users
+                          FROM pool GROUP BY route_id) t2
+                          ON t1.route_id = t2.route_id
+                          WHERE t2.num_users < 4
+                          GROUP BY t2.route_id DESC ORDER BY distance";
+        }else{
         //SEARCHES THE DATABASE FOR THE DATA WITH THE LAT,LNG CODE EQUAL TO THE USER'S CURRENT LAT,LNG CODE. THIS IS THE DEFAULT OF A MARKET
         $q = "SELECT big1.*, big2.* FROM
-        (SELECT
-         (
-          (
-            ACOS(
-                SIN('".$_SESSION['user']['location_latitude']."' * PI() / 180) * SIN(
-                    `t1`.`route_origlat` * PI() / 180) + COS('".$_SESSION['user']['location_latitude']."' * PI() / 180) * COS(`t1`.`route_origlat` * PI() / 180) * COS(
-                        (
-                            '".$_SESSION['user']['location_longitude']."' - `t1`.`route_origlong`
-                        ) * PI() / 180)
-                    ) * 180 / PI()) * 60 * 1.1515) AS distance
-                    
-                    , t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t2.num_users, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest
-              FROM
-              (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
-              r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`
-              FROM route r, pool p, users u
-              WHERE p.user_id = u.user_id AND p.route_id = r.route_id AND r.status = 'Waiting' and u.user_id != {$_SESSION['id']}) t1
-              INNER JOIN
-                (SELECT route_id, COUNT(*) as num_users
-                FROM pool GROUP BY route_id) t2
-                ON t1.route_id = t2.route_id
-                WHERE t2.num_users < 4
-                GROUP BY t2.route_id DESC ORDER BY distance) big1
-    LEFT JOIN 
-      (SELECT route_id FROM `pool` WHERE user_id != {$_SESSION['id']})big2
-    ON big1.route_id = big2.route_id
-    GROUP BY big1.route_id";
+                (SELECT
+                 (
+                  (
+                    ACOS(
+                        SIN('".$_SESSION['user']['location_latitude']."' * PI() / 180) * SIN(
+                            `t1`.`route_origlat` * PI() / 180) + COS('".$_SESSION['user']['location_latitude']."' * PI() / 180) * COS(`t1`.`route_origlat` * PI() / 180) * COS(
+                                (
+                                    '".$_SESSION['user']['location_longitude']."' - `t1`.`route_origlong`
+                                ) * PI() / 180)
+                            ) * 180 / PI()) * 60 * 1.1515) AS distance
+                            
+                            , t1.pool_id, t1.route_origlat, t1.route_origlong, t1.route_destlat, t1.route_destlong, t1.route_id, t2.num_users, t1.route_cost, t1.route_status, t1.add_orig, t1.add_dest
+                      FROM
+                      (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
+                      r.route_id as `route_id`, r.cost as `route_cost`, r.status as `route_status`, r.origin_address as `add_orig`, r.destination_address as `add_dest`
+                      FROM route r, pool p, users u
+                      WHERE p.user_id = u.user_id AND p.route_id = r.route_id AND r.status = 'Waiting' and u.user_id != {$_SESSION['id']}) t1
+                      INNER JOIN
+                        (SELECT route_id, COUNT(*) as num_users
+                        FROM pool GROUP BY route_id) t2
+                        ON t1.route_id = t2.route_id
+                        WHERE t2.num_users < 4
+                        GROUP BY t2.route_id DESC ORDER BY distance) big1
+            LEFT JOIN 
+              (SELECT route_id FROM `pool` WHERE user_id != {$_SESSION['id']})big2
+            ON big1.route_id = big2.route_id
+            GROUP BY big1.route_id";
+        }
 
         //$query_two = "SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id";
 
@@ -140,7 +170,7 @@
               echo "<p class='num_user_pool'>Sharers: {$data['num_users']}</p>";
               echo "<p class='cost'>Cost: {$data['route_cost']}</p>";
               echo "<p class='status'>Status: {$data['route_status']}</p>";
-            echo "<p class='pool_id'>Distance between you and the owner: ".number_format($data['distance'])." KM</p>";
+            echo "<p class='pool_id'>Distance: ".number_format($data['distance'])." KM</p>";
 
               // allows the user to join a pool, rejects if 4 (doesnt happen anyway since it wont show up here due to SQL restriction of pools sharer > 4)
               echo "<form method='POST' action ='".BASE_URL."market/joinpool.php'>";

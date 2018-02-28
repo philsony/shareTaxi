@@ -1,6 +1,8 @@
 <?php
   require('../connect.php');
 
+?>
+
 
 <!DOCTYPE html>
 <html lng="eng">

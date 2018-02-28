@@ -1,10 +1,11 @@
 <?php
+	require "../connect.php";
 	// Redirects unauthorized/unintentional access
 	if( !isset($_POST['srcLat']) || !isset($_POST['srcLong']) ){
 		header('location:create_src.php');
 	}
 
-	require("../connect.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +46,9 @@
 				<input type="text" name="destination" class="form-control" id="destination" placeholder="Search for Place" required>
 			</div>
 		</form>
+	<!-- End Form -->
+		<h2><a href="<?php echo BASE_URL ; ?>/login/welcome.php">Back</a></h2>
+
 	</div><!-- .col-xs-12 -->
 </div><!-- .row -->
 </div><!-- .container -->
