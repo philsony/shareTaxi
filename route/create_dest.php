@@ -20,6 +20,11 @@
 	#map {
 		height: 85vh;
 	}
+	html, body, div, div.container-fluid {
+    margin: 0;
+    padding: 0;
+    background-color: initial !important; 
+}
 </style>
 </head>
 <body>
