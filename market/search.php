@@ -67,6 +67,7 @@
           </div>
         </div>
         <br><br>
+      </div>
       <!-- contents of the body or LIST OF POOLS availalbe -->
     <div id = 'list'>
       <?php
@@ -92,7 +93,7 @@
                   LEFT JOIN
                   (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                   ON t1.route_id = t2.route_id
-                  WHERE t2.num_users < 4 AND t1.add_dest LIKE '%".$_POST['latlng']."%'
+                  WHERE t2.num_users < 4 AND (t1.add_dest LIKE '%".$_POST['latlng']."%' OR  t1.add_orig LIKE '%".$_POST['latlng']."%')
                   GROUP BY t2.route_id DESC";
           }else{
 
@@ -143,15 +144,16 @@
 
             // display these option when there are no available pools.
 
-            echo "<br><div class='container-fluid'><div class='row'>";
-            echo "<center><h4>There are no pools available.</h4></center>";
+            echo "<div class='row'>";
+            echo "<center><p class='h1'>No pools available, sorry.</center>";
             echo "</div>";
-            echo "<center><a href='".BASE_URL."route/create_src.php'><button class='submit' style='width: auto;'>Create Pool</button></a></center>";
+            echo "<div class='row'>";
+            echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></a></center>";
+            echo "</div>";
           }
         }
       ?>
     </div>
-  </div>
   </div>
   <div id="map"></div>
     <script>
