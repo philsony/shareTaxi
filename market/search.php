@@ -60,11 +60,12 @@
             <div class="col-md-3 col-md-offset-3 col-xs-12">
               <form style='display: inline; text-align: right;' id='searchform' method='POST' action='search.php'>
                 <input type='text' id='searchthis' value="" name='latlng' placeholder='Where to go?'>
-                <input type'text' id='hiddentext' name='hideme'>
+                <input type='text' id='hiddentext' name='hideme'>
                 <button name='sub' type='submit' id='sub_me'>Search</button>
               </form>
             </div>
           </div>
+        </div>
         <br><br>
       </div>
       <!-- contents of the body or LIST OF POOLS availalbe -->
@@ -80,9 +81,8 @@
           $searchLatitude = round($break[0],2); // round off to 2 places for a "RADIUS" feel
           $searchLongitude = round($break[1],2);
 
-          $query = "SELECT route_id FROM `pool` WHERE user_id = {$_SESSION['id']}";
-          $tryresult = mysqli_query($conn,$query);
-          $tryrows = mysqli_num_rows($tryresult);
+         $tryrows = 0 ;
+          
           if($tryrows == 0){
             $q = "SELECT t1.*, t2.* FROM
                   (SELECT p.pool_id as `pool_id`, r.origin_latitude as `route_origlat`, r.origin_longitude as `route_origlong`, r.destination_latitude as `route_destlat`, r.destination_longitude as `route_destlong`,
