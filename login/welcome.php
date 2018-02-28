@@ -1,7 +1,7 @@
 <?php
   require('../connect.php');
 
-	$sql="SELECT * FROM pool WHERE user_id=$userId ORDER BY `pool_id` LIMIT 3";
+	$sql="SELECT * FROM pool WHERE user_id=$userId ORDER BY `pool_id` DESC LIMIT 3";
     $result=mysqli_query($db,$sql);
     
 	$count=mysqli_num_rows($result);
