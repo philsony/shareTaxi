@@ -35,8 +35,8 @@
 	} else {
 		// Insert to routes
 		$query ="
-			INSERT INTO route (origin_address, origin_latitude, origin_longitude, destination_address, destination_latitude, destination_longitude, status, cost,author_id)
-			VALUES ('{$srcAddr}', {$srcLat}, {$srcLong}, '{$destAddr}', {$destLat}, {$destLong},'Waiting', 0, {$_SESSION['id']})
+			INSERT INTO route (origin_address, origin_latitude, origin_longitude, destination_address, destination_latitude, destination_longitude, status, cost)
+			VALUES ('{$srcAddr}', {$srcLat}, {$srcLong}, '{$destAddr}', {$destLat}, {$destLong},'Waiting', 0)
 		";
 		$result = mysqli_query($db, $query) or die("Error $query");
 
