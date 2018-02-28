@@ -65,7 +65,6 @@
               </form>
             </div>
           </div>
-        </div>
         <br><br>
       </div>
       <!-- contents of the body or LIST OF POOLS availalbe -->
