@@ -67,7 +67,6 @@
           </div>
         </div>
         <br><br>
-      </div>
       <!-- contents of the body or LIST OF POOLS availalbe -->
     <div id = 'list'>
       <?php
@@ -143,11 +142,10 @@
 
             // display these option when there are no available pools.
 
-            echo "<div class='row'>";
-            echo "<center><p class='h1'>No pools available, sorry.</center>";
+            echo "<div class='container-fluid'><div class='row'>";
+            echo "<center><h4>No pools available, sorry.</h4></center>";
             echo "</div>";
-            echo "<div class='row'>";
-            echo "<center><a href='".BASE_URL."route/create_src.php'><button class='btn btn-success'>Create Pool</button></a></center>";
+            echo "<center><a href='".BASE_URL."route/create_src.php'><button class='submit' style='width: auto;'>Create Pool</button></a></center>";
             echo "</div>";
           }
         }
