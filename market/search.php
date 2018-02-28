@@ -66,6 +66,7 @@
             </div>
           </div>
         <br><br>
+	</div>
       <!-- contents of the body or LIST OF POOLS availalbe -->
     <div id = 'list'>
       <?php
