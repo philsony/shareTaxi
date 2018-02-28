@@ -80,7 +80,7 @@ if(!isset($userId)){
                     <div class='row'>
                         <div class='col-xs-12 col-md-4 col-md-offset-1'>
                             <div class='bg-light box'>
-                                <p class='title'>Change Password</p>
+                                <p class='title'>Change Username</p>
                                 <form method='POST' onsubmit='return checkUser(this)' action='settings.php'>
                                     <p><span class='banner'><?php echo $user; ?></span></p>
                                     <br />
@@ -91,7 +91,7 @@ if(!isset($userId)){
                         </div>
                         <div class='col-xs-12 col-md-4 col-md-offset-1'>
                             <div class='bg-light box'>
-                                <p class='title'>Change Username</p>
+                                <p class='title'>Change Password</p>
                                 <p><span class='banner'><?php echo $email; ?></span></p>
                                 <br>
                                 <form method='POST' onsubmit='return checkPass(this)' action='settings.php'>
