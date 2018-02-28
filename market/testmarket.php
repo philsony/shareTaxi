@@ -23,6 +23,10 @@
     ?>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+      
+      .setLocation {
+            max-width: 243px;
+      }
       #map {
         height: 100%;
         display:none;
@@ -88,10 +92,10 @@
         <br><br>
       <div id = 'list'>     <?php
          echo "<div class='row ".$getLocationdata."'>";
-          echo "<center><p class='h1'>We need to get your location first</p></center>";
+          echo "<center><p class='h4'>We need to get your location first</p></center>";
           echo "</div>";
-          echo "<div id=\"geolocationButton\" class='row center ".$getLocationdata."'>";
-          echo "<center><button onclick=\"getLocation()\" class='btn btn-success'>Click Here to set your location</button></center>";
+          echo "<div id=\"geolocationButton\" class='row center text-center col-xs-12 ".$getLocationdata."'>";
+          echo "<center><button onclick=\"getLocation()\" class='btn btn-success setLocation'>Click Here to set your location</button></center>";
           echo "</div></br>";
   
 

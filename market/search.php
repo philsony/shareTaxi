@@ -79,8 +79,8 @@
           $break = explode(",",$data_received); //$_POST['hideme'] is in "LAT,LNG" format => thats why we explode
           $searchLatitude = round($break[0],2); // round off to 2 places for a "RADIUS" feel
           $searchLongitude = round($break[1],2);
-
-         $tryrows = 0 ;
+          $searchTerm = addslashes($_POST['latlng']);
+          $tryrows = 0 ;
           
           if($tryrows == 0){
             $q = "SELECT t1.*, t2.* FROM
@@ -91,7 +91,7 @@
                   LEFT JOIN
                   (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                   ON t1.route_id = t2.route_id
-                  WHERE t2.num_users < 4 AND (t1.add_dest LIKE '%".$_POST['latlng']."%' OR  t1.add_orig LIKE '%".$_POST['latlng']."%')
+                  WHERE t2.num_users < 4 AND (t1.add_dest LIKE '%".$searchTerm."%' OR  t1.add_orig LIKE '%".$searchTerm."%')
                   GROUP BY t2.route_id DESC";
           }else{
 
@@ -106,7 +106,7 @@
                     LEFT JOIN
                     (SELECT route_id, COUNT(*) as num_users FROM pool GROUP BY route_id) t2
                     ON t1.route_id = t2.route_id
-                    WHERE t2.num_users < 4 AND t1.add_dest LIKE '%".$_POST['latlng']."%'
+                    WHERE t2.num_users < 4 AND (t1.add_dest LIKE '%".$searchTerm."%' OR  t1.add_orig LIKE '%".$searchTerm."%')
                     GROUP BY t2.route_id DESC) big1
                     INNER JOIN
                     (SELECT route_id FROM `pool` WHERE user_id = {$_SESSION['id']}) big2
