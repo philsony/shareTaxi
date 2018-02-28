@@ -5,8 +5,8 @@
   if(isset($_POST['route_id'])){
     
     
-	$sql="SELECT * FROM route WHERE user_id=$userId AND route_id = {$_POST['route_id']} ";
-    $result=mysqli_query($db,$sql);
+	$sql="SELECT * FROM route WHERE author_id=$userId AND route_id = {$_POST['route_id']} ";
+  $result=mysqli_query($db,$sql);
     
 	$count=mysqli_num_rows($result);
     if($count == 0){
