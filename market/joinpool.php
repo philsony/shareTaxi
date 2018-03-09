@@ -11,7 +11,7 @@
         $result = mysqli_query($conn, $q);
         $rows = mysqli_num_rows($result);
         if($rows != 0){
-          echo "You are already in this pool.";
+          
       	}else{
           $query = "INSERT INTO pool VALUES (NULL, $userId, $routeId)";
       		$resultTwo = mysqli_query($conn,$query);
@@ -48,6 +48,23 @@
   db.collection("messages").doc("<?php echo $_POST['route_id']; ?>").set({
     users: <?php echo $fs_data; ?>
   }, {merge: true}).then(function() {
-    alert("Success!");
+    window.location("<?php echo BASE_URL.'market/myactive_pools.php?action=joined&entity=You'?>");
   });
 </script>
+
+<style>
+  html, body {
+    background-color: #292c35 !important;
+  }
+
+  .content {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+  }
+</style>
+
+<div class='content'>
+  <img style='width: 50px;' src='<?php echo BASE_URL ?>/assets/images/please_wait.gif' />
+</div>
