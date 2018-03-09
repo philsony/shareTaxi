@@ -75,8 +75,8 @@
                 <div class='extendminionmobile'></div>
               </form>
             </div>
-          </div>
-        </div>
+          </div>  
+          <br>
     <?php 
           // search for all existing routes in the table and FIND if the user owns any
           $q = "SELECT route_id as `r_id` FROM route WHERE status != 'FINISHED'";

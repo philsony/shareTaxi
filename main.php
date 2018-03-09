@@ -117,7 +117,7 @@ body {
   }
 }
 </style>
-<div class="preloaderContainer">
+<!-- <div class="preloaderContainer">
   <div class="preloader">
     <div class="lines">
       <div class="line line-1"></div>
@@ -127,7 +127,7 @@ body {
 
     <div class="loading-text">LOADING</div>
   </div>
-</div>
+</div> -->
 
 <script>
   $(document).ready(function() {

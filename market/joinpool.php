@@ -1,27 +1,3 @@
-<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-firestore.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBs7VM1SUqWyLZVDSuFazk3LcSfIerp8GM",
-    authDomain: "sharetaxi-78289.firebaseapp.com",
-    databaseURL: "https://sharetaxi-78289.firebaseio.com",
-    projectId: "sharetaxi-78289",
-    storageBucket: "sharetaxi-78289.appspot.com",
-    messagingSenderId: "599684388499"
-  };
-  firebase.initializeApp(config);
-
-	var db = firebase.firestore();
-
-	db.collection("messages").doc("<?php echo $_POST['route_id']; ?>").set({
-		users: <?php echo $fs_data; ?>
-	}, {merge: true}).then(function() {
-		alert("Success!");
-	});
-</script>
-
 <?php
 
   require('../connect.php');
@@ -37,9 +13,42 @@
         if($rows != 0){
           echo "You are already in this pool.";
       	}else{
-      		$query = "INSERT INTO pool VALUES (NULL, $userId, $routeId)";
+          // Messaging: Informs firestore of a new person in the pool. Do not touch! 
+          $fs_sql = "SELECT * FROM users WHERE user_id IN (SELECT user_id FROM pool WHERE route_id = ${routeId})";
+          $fs_query = mysqli_query($conn, $fs_sql);
+          $fs_result = array();
+          while($fs_fetch = mysqli_fetch_assoc($fs_query)) {
+            $fs_result[$fs_fetch['user_id']] = $fs_fetch['name'];
+          }
+          $fs_data = json_encode($fs_result);
+          // End of Messaging Event Emit
+          $query = "INSERT INTO pool VALUES (NULL, $userId, $routeId)";
       		$resultTwo = mysqli_query($conn,$query);
       		header($return);
       	}
       }
+?>
 
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBs7VM1SUqWyLZVDSuFazk3LcSfIerp8GM",
+    authDomain: "sharetaxi-78289.firebaseapp.com",
+    databaseURL: "https://sharetaxi-78289.firebaseio.com",
+    projectId: "sharetaxi-78289",
+    storageBucket: "sharetaxi-78289.appspot.com",
+    messagingSenderId: "599684388499"
+  };
+  firebase.initializeApp(config);
+
+  var db = firebase.firestore();
+
+  db.collection("messages").doc("<?php echo $_POST['route_id']; ?>").set({
+    users: <?php echo $fs_data; ?>
+  }, {merge: true}).then(function() {
+    alert("Success!");
+  });
+</script>
