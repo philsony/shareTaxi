@@ -18,12 +18,16 @@
 <link rel='stylesheet' href='css/general_style.css' />
 <style>
 	#map {
-		height: 85vh;
+		height: 100vh;
 	}
 	html, body, div, div.container-fluid {
     margin: 0;
     padding: 0;
-    background-color: initial !important; 
+	background-color: initial !important; 
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+	margin-right: 0 !important;
+	padding-right: 0 !important;
 }
 </style>
 </head>
@@ -32,7 +36,7 @@
 		include('../main.php');
 		include('../core/alerts.php');
 ?>
-<div class="container">
+<div class="container" style='width: 100%'>
 <!-- Content -->
 <div class="row">
 	<div class="col-xs-12">
