@@ -95,8 +95,8 @@
           echo "<center><p class='h4'>We need to get your location first</p></center>";
           echo "</div>";
           echo "<div id=\"geolocationButton\" class='row center text-center col-xs-12 ".$getLocationdata."'>";
-          echo "<center><button onclick=\"getLocation()\" class='btn btn-success setLocation'>Click Here to set your location</button></center>";
-          echo "</div></br>";
+          echo "<center><button onclick=\"getLocation()\" class='btn btn-success setLocation'>Click here to set your location</button></center>";
+          echo "</div><br><br><br>";
   
 
         $query = "SELECT route_id FROM `pool` WHERE user_id != {$_SESSION['id']}";

@@ -13,6 +13,8 @@
         if($rows != 0){
           echo "You are already in this pool.";
       	}else{
+          $query = "INSERT INTO pool VALUES (NULL, $userId, $routeId)";
+      		$resultTwo = mysqli_query($conn,$query);
           // Messaging: Informs firestore of a new person in the pool. Do not touch! 
           $fs_sql = "SELECT * FROM users WHERE user_id IN (SELECT user_id FROM pool WHERE route_id = ${routeId})";
           $fs_query = mysqli_query($conn, $fs_sql);
@@ -22,9 +24,6 @@
           }
           $fs_data = json_encode($fs_result);
           // End of Messaging Event Emit
-          $query = "INSERT INTO pool VALUES (NULL, $userId, $routeId)";
-      		$resultTwo = mysqli_query($conn,$query);
-      		header($return);
       	}
       }
 ?>
