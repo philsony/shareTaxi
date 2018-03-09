@@ -38,6 +38,14 @@ button:hover {
     font-size: 14px;
     border-radius: 0;
     text-transform: uppercase;
+    z-index: 999;
+    bottom: 2.5vh;
+    position: fixed;
+}
+
+.pac-container * {
+    background-color: #fff !important;
+    color: #000;
 }
 
 .get-location button:hover {

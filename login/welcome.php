@@ -27,7 +27,7 @@
 		  ?>
 		  	<div class='container-fluid'>
 				<div class='row'>
-					<div class="col-md-4 col-md-offset-1">
+					<div class="col-md-4">
 						<a href="<?php echo BASE_URL ; ?>/market/myactive_pools.php">
 							<div class='node'>
 								<i class="fa fa-car"></i> My Active Pools
@@ -54,7 +54,7 @@
 							</div>
 						</a>
 					</div>
-					<div class='col-md-5 col-md-offset-1'>
+					<div class='col-md-6 col-md-offset-1'>
 						<div class='box bg-light text-normal'>
 							<h3>Welcome, <?php echo $_SESSION['login_user']; ?>!</h3>
 							<br /><?php

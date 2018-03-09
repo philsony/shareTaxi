@@ -13,7 +13,7 @@
 <link rel='stylesheet' href='../assets/css/global.css' />
 <style>
 	#map {
-		height: 85vh;
+		height: 100vh;
 	}
 		html, body, div, div.container-fluid {
     margin: 0;
