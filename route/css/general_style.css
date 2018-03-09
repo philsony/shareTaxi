@@ -27,6 +27,7 @@ button {
 button:hover {
     background-color: #0c7a7c !important;
 }
+
 .get-location button {
     background-color: #010101 !important;
     font-family: 'Circular Std';
@@ -41,6 +42,11 @@ button:hover {
     z-index: 999;
     bottom: 2.5vh;
     position: fixed;
+}
+
+#map * {
+    background-color: initial !important;
+    color: #000;
 }
 
 .pac-container * {
