@@ -48,7 +48,8 @@
   db.collection("messages").doc("<?php echo $_POST['route_id']; ?>").set({
     users: <?php echo $fs_data; ?>
   }, {merge: true}).then(function() {
-    window.location("<?php echo BASE_URL.'market/myactive_pools.php?action=joined&entity=You'?>");
+    window.location.href = "<?php echo BASE_URL.'market/myactive_pools.php?action=joined&entity=You'?>";
+    console.log('done');
   });
 </script>
 
@@ -64,6 +65,10 @@
     top: 50%;
   }
 </style>
+
+<head>
+  <meta http-equiv='refresh' content='3;<?php echo BASE_URL.'market/myactive_pools.php?action=joined&entity=You'?>');
+</head>
 
 <div class='content'>
   <img style='width: 50px;' src='<?php echo BASE_URL ?>/assets/images/please_wait.gif' />
