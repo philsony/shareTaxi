@@ -13,3 +13,4 @@
 	$loginSession = (isset($_SESSION['login_user'] )) ? $_SESSION['login_user'] : '';
 
 
+	require("loader.php");
