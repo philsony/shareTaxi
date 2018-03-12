@@ -51,7 +51,7 @@
 
 		// Messaging: Informs firestore of a new person in the pool. Do not touch! 
 		$fs_sql = "SELECT * FROM users WHERE user_id IN (SELECT user_id FROM pool WHERE route_id = ${routeId})";
-		$fs_query = mysqli_query($conn, $fs_sql);
+		$fs_query = mysqli_query($db, $fs_sql);
 		$fs_result = array();
 		while($fs_fetch = mysqli_fetch_assoc($fs_query)) {
 		  $fs_result[$fs_fetch['user_id']] = $fs_fetch['name'];
