@@ -48,6 +48,16 @@
 			INSERT INTO pool (user_id, route_id)
 			VALUES ({$userId}, {$routeId})
 		";
+
+		// Messaging: Informs firestore of a new person in the pool. Do not touch! 
+		$fs_sql = "SELECT * FROM users WHERE user_id IN (SELECT user_id FROM pool WHERE route_id = ${routeId})";
+		$fs_query = mysqli_query($conn, $fs_sql);
+		$fs_result = array();
+		while($fs_fetch = mysqli_fetch_assoc($fs_query)) {
+		  $fs_result[$fs_fetch['user_id']] = $fs_fetch['name'];
+		}
+		$fs_data = json_encode($fs_result);
+		// End of Messaging Event Emit
 		// Note user id must exist in users table, else the query is an error
 		$result = mysqli_query($db, $query) or die("Error $query");
 
@@ -77,7 +87,6 @@
     users: <?php echo $fs_data; ?>
   }, {merge: true}).then(function() {
     window.location.href = "<?php echo HOMEPAGE.'?action=created&entity=route'; ?>";
-    console.log('done');
   });
 </script>
 
