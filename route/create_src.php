@@ -20,6 +20,10 @@
     padding: 0;
     background-color: initial !important; 
 }
+		.text-center.banner {
+    background: black !important;
+    color: white;
+}
 </style>
 </head>
 <body>
@@ -44,6 +48,7 @@
 				<button type="submit" class="btn btn-success"><i class='fa fa-angle-right'></i></button>
 			</div>
 			<div class="form-group pick-place">
+				<div class="text-center banner"><p>Where are you ?</p></div>
 				<input type="text" name="source" class="form-control" id="source" placeholder="Search for Place" required>
 			</div>
 		</form>

@@ -29,6 +29,10 @@
 	margin-right: 0 !important;
 	padding-right: 0 !important;
 }
+		.text-center.banner {
+    background: black !important;
+    color: white;
+}
 </style>
 </head>
 <body>
@@ -52,6 +56,7 @@
 				<button type="submit" class="btn btn-info"><i class='fa fa-map-marker-alt'></i> Proceed</button>
 			</div>
 			<div class="form-group pick-place">
+				<div class="text-center banner"><p>Where are you going ?</p></div>
 				<input type="text" name="destination" class="form-control" id="destination" placeholder="Search for Place" required>
 			</div>
 		</form>

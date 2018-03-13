@@ -19,6 +19,10 @@
     padding: 0;
     background-color: initial !important; 
 }
+		.text-center.banner {
+    background: black !important;
+    color: white;
+}
 	</style>
 </head>
 <body>
@@ -48,6 +52,7 @@
 				<button type="submit" class="btn btn-success"><i class='fa fa-angle-right'></i></button>
 			</div>
 			<div class="form-group pick-place">
+				<div class="text-center banner"><p>Please enter a new destination</p></div>
 				<input type="text" name="destination" class="form-control" id="destination" placeholder="Update Destination" required>
 			</div>
 		</form>
