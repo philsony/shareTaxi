@@ -12,27 +12,41 @@
 	<link rel="stylesheet" href="css/general_style.css">
 	<style>
 		#map {
-			height: 300px;
-		}
+		height: 100vh;
+	}
+		html, body, div, div.container-fluid {
+    margin: 0;
+    padding: 0;
+    background-color: initial !important; 
+}
 	</style>
 </head>
 <body>
-<div class="container">
-<!-- Content -->
+	<?php
+		include('../main.php');
+		include('../core/alerts.php');
+?>
+        
+<div class="container-fluid">
 <div class="row">
 	<div class="col-xs-12">
 	<!-- Actual Form -->
-		<form method="POST" action="update_dest.php">
-			<div class="form-group">
-				<label for="user">Origin</label>
-				<input type="text" name="source" class="form-control" id="source" placeholder="Search Box" required>
-			</div>
-			<input type="hidden" name="srcLat" class="form-control" id="srcLat" value="10.29896770" >
+
+		
+			<form method="POST" action="update_dest.php">
+			<input type="hidden" name="srcLat" class="form-control" id="srcLat" value="10.29896770">
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong" value="123.88131810">
-			<input type="hidden" name= "ID" value="<?php  echo $_SESSION['id'] ; ?>">
-			<button type="button" class="btn btn-info" id="curr_loc">Your current location</button>
+				<input type="hidden" name= "ID" value="<?php  echo $_SESSION['id'] ; ?>">
 			<div id="map"></div>
-			<button type="submit" class="btn btn-success">Next</button>
+			<div class='get-location'>
+				<button type="button" class="btn btn-info" id="curr_loc"><i class='fa fa-map-marker-alt'></i> Get current location</button>
+			</div>
+			<div class='next'>
+				<button type="submit" class="btn btn-success"><i class='fa fa-angle-right'></i></button>
+			</div>
+			<div class="form-group pick-place">
+				<input type="text" name="source" class="form-control" id="source" placeholder="Update Source" required>
+			</div>
 		</form>
 	<!-- End Form -->
 	</div><!-- .col-xs-12 -->
@@ -138,7 +152,7 @@
 			};
 			// For db
 			document.getElementById('srcLat').setAttribute('value', pos.lat);
-			document.getElementById('srcLong').setAttribute('value', pos.long);
+			document.getElementById('srcLong').setAttribute('value', pos.lng);
 			// Reverse Geocoding (accepts longlat, returns address)
 			geocoder.geocode({'location': pos}, function(results, status) {
 				if (status === 'OK') {

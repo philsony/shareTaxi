@@ -11,30 +11,45 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/general_style.css">
 	<style>
-		#map {
-			height: 300px;
-		}
+			#map {
+		height: 100vh;
+	}
+		html, body, div, div.container-fluid {
+    margin: 0;
+    padding: 0;
+    background-color: initial !important; 
+}
 	</style>
 </head>
 <body>
-<div class="container">
-<!-- Content -->
+		<?php
+		include('../main.php');
+		include('../core/alerts.php');
+?>
+    
+<div class="container-fluid">
 <div class="row">
 	<div class="col-xs-12">
 	<!-- Actual Form -->
-		<form method="POST" action="update.php">
-			<div class="form-group">
-				<label for="user">Destination</label>
-				<input type="text" name="destination" class="form-control" id="destination" placeholder="Search Box" required="">
-			</div>
-			<input type="hidden" name="destLat" class="form-control" id="destLat" alt="10.3541">
-			<input type="hidden" name="destLong" class="form-control" id="destLong" alt=" 123.9116">
-			<input type="hidden" name="source" class="form-control" id="source">
+	<!-- Actual Form -->
+
+			<form method="POST" action="update.php">
+			<input type="hidden" name="destLat" class="form-control" id="destLat" value="10.29896770">
+			<input type="hidden" name="destLong" class="form-control" id="destLong" value="123.88131810">
+				<input type="hidden" name="source" class="form-control" id="source">
 			<input type="hidden" name="srcLat" class="form-control" id="srcLat">
 			<input type="hidden" name="srcLong" class="form-control" id="srcLong">
-			<input type="hidden" name= "ID" class= "form-countrol" id="ID" value="<?php echo $_SESSION['id'] ;?>">
+				<input type="hidden" name= "ID" value="<?php  echo $_SESSION['id'] ; ?>">
 			<div id="map"></div>
-			<button type="submit" class="btn btn-success">Submit</button>
+			<div class='get-location'>
+				<button type="button" class="btn btn-info" id="curr_loc"><i class='fa fa-map-marker-alt'></i> Get current location</button>
+			</div>
+			<div class='next'>
+				<button type="submit" class="btn btn-success"><i class='fa fa-angle-right'></i></button>
+			</div>
+			<div class="form-group pick-place">
+				<input type="text" name="source" class="form-control" id="source" placeholder="Update Destination" required>
+			</div>
 		</form>
 	<!-- End Form -->
 	</div><!-- .col-xs-12 -->
